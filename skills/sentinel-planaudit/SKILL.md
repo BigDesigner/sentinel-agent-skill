@@ -39,7 +39,7 @@ Audit the located plan against the loaded constraints. Specifically check for:
 ### 4. Auto-Correction (Plan Modification)
 - If violations are found, **DO NOT just complain about them.** You are the reviewer.
 - **Directly modify the `implementation_plan.md`** file (using file writing tools) to patch the flaws. 
-- For example: Add a new sub-step to the plan to include `esc_html_e()` for translations, or replace a proposed `npm install` command with `yarn add`.
+- For example: Add a new sub-step to the plan to include strict output sanitization against XSS, enforce parameterized SQL queries, or replace a proposed `npm install` command with `yarn add`.
 - Add an `### Audit Notes` section to the bottom of the plan detailing what you fixed.
 
 ### 5. Final Output & Approval

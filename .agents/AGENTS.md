@@ -31,3 +31,6 @@ Whenever you modify `skills/sentinel/SKILL.md`, you MUST automatically synchroni
 
 ## 8. Absolute English-Only Codebase (Zero Tolerance)
 This framework is distributed globally. Under NO circumstances are you allowed to hardcode non-English strings, fallback messages, variable names, or filenames directly into `SKILL.md` or any repository file. Even if the user is communicating with you in a non-English language and provides localized examples in the chat, you MUST mentally translate them to English before writing them to the codebase. Interactive dynamic responses should be handled in English inside the code, and translated to the user's preferred language only at runtime.
+
+## 9. Auto-Sync Custom Rules Template
+Whenever you modify this `.agents/AGENTS.md` file, you MUST automatically evaluate and synchronize those changes to `templates/custom-rules-template.md` without asking the user for permission. `templates/custom-rules-template.md` acts as the raw fallback template for custom IDE rules. Do not let these two core rule sets drift apart.

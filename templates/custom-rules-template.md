@@ -20,7 +20,7 @@ This file outlines the communication styling, workflow preferences, and stack-sp
   - Flutter: `flutter analyze`
   - Rust: `cargo check`
 - **Dependency Guardrails:** Never introduce outdated or deprecated libraries. Always inspect the lockfile/manifest to verify dependency alignment.
-- **Security Sanitization:** Follow rules in `.specs/security-standards.md` explicitly. Ensure output variables, templates, and queries are appropriately escaped or bound.
+- **Security Sanitization:** Follow rules in `.specs/boundary-conditions.md` explicitly. Ensure output variables, templates, and queries are appropriately escaped or bound.
 
 ---
 
