@@ -97,7 +97,7 @@ To make your agent behave like a Sentinel-equipped assistant in Cursor or Windsu
    * **Windsurf:** Cascade settings file.
 3. Your agent will now automatically search for and maintain your `.memory-bank` structure across every project you open.
 
-### 3. As a Tek-Seferlik (One-Time) Bootstrapper
+### 3. As a One-Time Bootstrapper
 If you just want to organize a messy, flat project:
 1. Copy the contents of [templates/sentinel-directive.md](file:///templates/sentinel-directive.md).
 2. Paste it directly into your chat with Claude Code, ChatGPT, or Gemini.
