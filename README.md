@@ -84,7 +84,7 @@ You don't need to understand what a "skill folder" or a "terminal" is. Just copy
 > Install sentinel skills: run `git clone --depth 1 https://github.com/BigDesigner/sentinel-agent-skill.git ~/.claude/skills/sentinel-agent-skill` then tell me what slash commands are now available.
 
 **For Google Antigravity (Windows):**
-> Install sentinel skills: run `git clone --depth 1 https://github.com/BigDesigner/sentinel-agent-skill.git "$env:USERPROFILE\.gemini\config\skills\sentinel-agent-skill"` then tell me what slash commands are now available.
+> Install sentinel skills: run `git clone --depth 1 https://github.com/BigDesigner/sentinel-agent-skill.git "$env:USERPROFILE\.gemini\config\plugins\sentinel-agent-skill"` then tell me what slash commands are now available.
 
 **For Cursor or Windsurf:**
 > Since Cursor and Windsurf do not currently support native skill execution, open the `templates/sentinel-directive.md` file from this repo, copy all of its text, and paste it into your IDE's global rules (e.g., Settings → Rules for AI). Then simply type `/sentinel` in a new chat to begin.
@@ -98,15 +98,15 @@ For power users who prefer to install the skills manually into their respective 
 | Platform | Install Path |
 |---|---|
 | **Claude Code** | `~/.claude/skills/sentinel-agent-skill/` |
-| **Antigravity (Windows)** | `%USERPROFILE%\.gemini\config\skills\sentinel-agent-skill\` |
-| **Antigravity (Mac/Linux)** | `~/.gemini/config/skills/sentinel-agent-skill/` |
+| **Antigravity (Windows)** | `%USERPROFILE%\.gemini\config\plugins\sentinel-agent-skill\` |
+| **Antigravity (Mac/Linux)** | `~/.gemini/config/plugins/sentinel-agent-skill/` |
 | **Cursor** | `~/.cursor/skills/sentinel-agent-skill/` |
 | **Windsurf** | `~/.windsurf/skills/sentinel-agent-skill/` |
 | **OpenAI Codex** | `~/.codex/skills/sentinel-agent-skill/` |
 
 **Manual Install Command (Example for Mac/Linux Antigravity):**
 ```bash
-git clone https://github.com/BigDesigner/sentinel-agent-skill.git ~/.gemini/config/skills/sentinel-agent-skill
+git clone https://github.com/BigDesigner/sentinel-agent-skill.git ~/.gemini/config/plugins/sentinel-agent-skill
 ```
 
 ---
