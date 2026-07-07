@@ -21,7 +21,6 @@ This document describes the structure and file layout initialized by the Sentine
 │   ├── bootstrap.md        # Setup, installation, and build commands
 │   ├── boundary-conditions.md # Technical limitations and safety budgets
 │   ├── constitution.md     # Code quality and development standards
-│   └── security-standards.md # Security mitigations and dependency policies
 │
 ├── .agents/                # AI agent runtime customizations
 │   ├── AGENTS.md           # Project-scoped AI behavior and rules (No Fluff)
@@ -65,4 +64,4 @@ Markdown files tracking significant engineering decisions (e.g. choice of framew
 
 - **`bootstrap.md`**: Centralizes dependencies, variables, environment setups, and deployment commands.
 - **`boundary-conditions.md`**: Defines hard boundaries (e.g. rate limits, security models, data scopes) the agent must never violate.
-- **`security-standards.md`**: Houses the project's security mitigations (e.g., escape sequences, nonces, dependency versioning rules). No proposed code may violate these standards.
+- **`constitution.md`**: Project-specific development rules, naming conventions, architectural design patterns, and testing requirements.

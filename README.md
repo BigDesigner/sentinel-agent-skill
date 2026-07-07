@@ -40,7 +40,6 @@ Sentinel organizes your repository's meta-context into four primary operational 
 │   ├── bootstrap.md        # Setup, installation, and build commands
 │   ├── boundary-conditions.md # Technical limitations and safety budgets
 │   ├── constitution.md     # Code quality and development standards
-│   └── security-standards.md # Security mitigations and dependency policies
 ├── 📁 .agents/             # AI agent runtime customizations
 │   ├── AGENTS.md           # Project-scoped AI behavior and rules (No Fluff)
 │   └── runtime-manifest.json # Runtime configuration and permission boundaries
@@ -120,7 +119,7 @@ Once installed, you can trigger specific workflows using the following commands:
 | **`/sentinel`** | Full 7-step bootstrap (Analyzes codebase, reorganizes folders, writes specs). |
 | **`/sentinel-mb`** | Initializes or syncs only the `.memory-bank/` structure and active session state. |
 | **`/sentinel-scan`** | Scans the repository for all `*.md` and `*.txt` files and outputs a categorized documentation inventory. |
-| **`/sentinel-audit`** | Audits the codebase against `.specs/security-standards.md` rules and provides a **report-only** security verdict. |
+| **`/sentinel-audit`** | Audits the codebase against `.specs/boundary-conditions.md` rules and provides a **report-only** security verdict. |
 | **`/sentinel-handoff`**| Wraps up a work session. Syncs `active-session.json`, updates `handoff.md` with only codebase changes, and pushes to git. |
 | **`/sentinel-planaudit`**| *(Alias: `/sentinel-pa`)* Acts as a Senior Architect. Auto-reviews and hardens implementation plans against project specs before execution. |
 
