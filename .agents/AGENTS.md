@@ -25,3 +25,6 @@ Any updates to the core directive or skills must be pushed to `origin/main` so t
 
 ## 6. Global IDE Compatibility (Cross-IDE Strictness)
 This repository is a global AI agent framework. Whenever you create or modify a skill, you MUST explicitly account for the architectural and file-system differences between major AI IDEs (Antigravity, Cursor, Windsurf, Claude Code). Never write vague or guessing pathing instructions. You must define deterministic, platform-agnostic, and cross-IDE fallback logic for any file manipulation or artifact reading.
+
+## 7. Auto-Sync Sentinel Directive Template (CRITICAL)
+Whenever you modify `skills/sentinel/SKILL.md`, you MUST automatically synchronize those changes to `templates/sentinel-directive.md` without asking the user for permission. `templates/sentinel-directive.md` acts as the raw fallback template for IDEs that do not support native skill execution (like Cursor or Windsurf). Do not let these two files drift apart.
