@@ -17,9 +17,10 @@ This skill focuses solely on creating or updating the memory bank structural ele
 
 2. **Scaffold Subdirectories**
    - Ensure the following directories exist within `.memory-bank/`:
-     - `.memory-bank/changelogs/`
+     - `.memory-bank/changelog/`
      - `.memory-bank/adr/`
-     - `.memory-bank/audit-reports/`
+     - `.memory-bank/audits/`
+     - `.memory-bank/bugs/`
 
 3. **Initialize `active-session.json`**
    - If `.memory-bank/active-session.json` does not exist, create it with:
