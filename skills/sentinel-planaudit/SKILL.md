@@ -20,7 +20,7 @@ Do not guess. Search for the proposed plan document in the following exact order
 1. **Antigravity Artifacts:** Find the most recently modified `implementation_plan.md` inside `~/.gemini/antigravity/brain/` (or `%USERPROFILE%\.gemini\antigravity\brain\` on Windows).
 2. **Local Workspace (Cursor / Windsurf / Claude Code):** Look for `implementation_plan.md`, `plan.md`, or `draft_plan.md` in the root of the current project directory.
 3. **Fallback (No Plan Exists):** If no plan can be found in the above locations, **DO NOT FAIL**. Instead, immediately ask the user:
-  > *"Herhangi bir aktif plan bulunamadı. Lütfen önce yapmak istediğiniz geliştirmeyi kısaca yazın (örn: 'Şifre sıfırlama ekranı yapalım'). Ben sizin için bir plan oluşturup, o planı proje standartlarına ve güvenlik kurallarına göre denetleyeceğim."*
+  > *"No active plan was found. Please briefly describe the development you want to make (e.g., 'Let's build a password reset screen'). I will generate a plan for you and audit it against the project standards and security rules."*
   Halt execution and wait for the user's response. Once provided, generate the plan and proceed to Step 2.
 
 ### 2. Load Constraints (Context Gathering)
