@@ -125,6 +125,23 @@ Once installed, you can trigger specific workflows using the following commands:
 
 ---
 
+### 🔄 How to Update
+
+Since Sentinel is installed via Git, updates are fast and easy. 
+
+**Zero Setup Method (For Beginners):**
+Just tell your agent to update the repository for you:
+> "Update my sentinel skills by running `git pull` inside the `sentinel-agent-skill` directory."
+
+**Manual Method (For Power Users):**
+Navigate to your agent's config folder where you installed Sentinel and pull the latest changes:
+```bash
+cd <path-to-skill-folder>/sentinel-agent-skill
+git pull origin main
+```
+
+---
+
 ### 3. As a One-Time Bootstrapper
 If you just want to organize a messy, flat project:
 1. Copy the contents of [templates/sentinel-directive.md](file:///templates/sentinel-directive.md).
