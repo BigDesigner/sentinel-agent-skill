@@ -884,9 +884,11 @@ Each section or field must explicitly include one of these confidence labels: `V
 
 Include:
 
-- Security constraints.
-- Authentication/authorization assumptions.
+- Security constraints & Input Validation (How data entering the system must be handled).
+- Authentication/authorization assumptions and access control.
 - BOLA/IDOR prevention expectations.
+- Ecosystem-Specific Mitigations (e.g., WordPress `esc_url`, Next.js `taint`, Rust memory safety rules).
+- Dependency Management Rules (handling deprecated packages, favoring stable versions).
 - Rate limits if known.
 - Database constraints.
 - Performance budgets if known.
@@ -895,9 +897,11 @@ Include:
 - Deployment boundaries.
 - CI/CD boundaries, if workflow files are detected.
 
-**Legacy Rules Consolidation:** If you found legacy security/audit rules in ad-hoc files during discovery (e.g., `audit.md`, `rules.md`, `notice.md`), analyze them. If they contain valid boundaries, merge their wisdom into this file. If they are harmful or outdated, ignore them. The original ad-hoc files will be archived in Step 4.
+**Legacy Rules Consolidation:** If you found legacy security/audit rules in ad-hoc files during discovery (e.g., `audit.md`, `rules.md`, `notice.md`, `security-standards.md`), analyze them. If they contain valid boundaries, merge their wisdom into this file. If they are harmful or outdated, ignore them. The original ad-hoc files will be archived in Step 4.
 
 Mark unknowns as `Unconfirmed`.
+
+This file serves as a hard constraint: no code may be written by the agent that violates the rules established in `.specs/boundary-conditions.md`.
 
 ### 3.11 `.specs/constitution.md`
 
@@ -917,20 +921,7 @@ Document engineering standards:
 
 Integrate useful rules from old `AGENTS.md`, `agents/`, or equivalent docs.
 
-### 3.12 `.specs/security-standards.md`
-
-Based on the detected project paradigm (Step 1.3), create a definitive security and dependency contract for the project.
-
-It must include:
-
-- **Ecosystem-Specific Mitigations**: e.g., WordPress (`esc_url`, `wp_nonce_field`, `defined('ABSPATH') || exit;`), Next.js (SSR XSS, Server Components data leak prevention via `taint`), Rust (memory safety rules), Flutter (API proxying vs hardcoded keys).
-- **Dependency Management Rules**: Always favor the latest stable versions. Specify rules for handling major/minor updates and handling deprecated packages.
-- **Input Validation & Sanitization**: How data entering the system must be handled.
-- **Authentication & Authorization**: How access is controlled.
-
-This file serves as a hard constraint: no code may be written by the agent that violates the rules established in `.specs/security-standards.md`.
-
-### 3.13 `.agents/AGENTS.md`
+### 3.12 `.agents/AGENTS.md`
 
 Generate a project-scoped rules file tailored to this specific repository. This file serves as the workspace customization root for AI agents.
 
@@ -942,7 +933,7 @@ It must include:
   - **Error Handling:** When an error is made, do not apologize. Acknowledge the error and directly output the corrected code, command, or file replacement.
 - **Stack-Specific Agent Behaviors**: (e.g., "Always use `php -l` before proposing a commit" or "Never run `cargo run` without building first").
 
-### 3.14 `.agents/runtime-manifest.json`
+### 3.13 `.agents/runtime-manifest.json`
 
 Create a runtime manifest based on the detected project structure.
 
@@ -1007,7 +998,7 @@ The following memory-bank paths must always be writable unless the user explicit
 - `.tasks/`
 - `.archive/docs-migration/`
 
-### 3.15 `.tasks/pipeline.md`
+### 3.14 `.tasks/pipeline.md`
 
 Document:
 
@@ -1020,7 +1011,7 @@ Document:
 - Release readiness.
 - CI mode notes, if applicable.
 
-### 3.16 `.tasks/handoff.md`
+### 3.15 `.tasks/handoff.md`
 
 Create a reusable handoff template containing:
 
