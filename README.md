@@ -119,9 +119,10 @@ Once installed, you can trigger specific workflows using the following commands:
 |---|---|
 | **`/sentinel`** | Full 7-step bootstrap (Analyzes codebase, reorganizes folders, writes specs). |
 | **`/sentinel-mb`** | Initializes or syncs only the `.memory-bank/` structure and active session state. |
-| **`/sentinel-scan`** | Scans all `*.md` / `*.txt` files in the repo and outputs a categorized inventory. |
-| **`/sentinel-audit`** | Runs a report-only security audit against `.specs/security-standards.md`. |
-| **`/sentinel-handoff`** | Updates `handoff.md` and `active-session.json` to transition to a new session. |
+| **`/sentinel-scan`** | Scans the repository for all `*.md` and `*.txt` files and outputs a categorized documentation inventory. |
+| **`/sentinel-audit`** | Audits the codebase against `.specs/security-standards.md` rules and provides a **report-only** security verdict. |
+| **`/sentinel-handoff`**| Wraps up a work session. Syncs `active-session.json`, updates `handoff.md` with only codebase changes, and pushes to git. |
+| **`/sentinel-planaudit`**| *(Alias: `/sentinel-pa`)* Acts as a Senior Architect. Auto-reviews and hardens implementation plans against project specs before execution. |
 
 ---
 
