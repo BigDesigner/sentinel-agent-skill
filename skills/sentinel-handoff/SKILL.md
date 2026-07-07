@@ -21,7 +21,8 @@ This skill is designed to be run at the end of a work session. It quickly captur
 2. **Update `handoff.md`**
    - Read `.tasks/handoff.md`.
    - Record the current Git branch and the last commit hash/message.
-   - Summarize the key actions completed in the current session based on recent changes or chat context.
+   - Summarize the key actions completed in the current session based **ONLY on actual repository code/file changes.**
+   - **CRITICAL BOUNDARY:** DO NOT include global agent configurations, IDE setups, or out-of-scope chat discussions in the project's handoff document. Keep the summary strictly focused on what was modified in this specific codebase.
    - Note any open issues or immediate next steps for the incoming agent.
    - Append this new entry to the top of the handoff history.
 
