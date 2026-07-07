@@ -22,3 +22,6 @@ When updating the `sentinel-handoff` skill, remember that the handoff summary mu
 
 ## 5. Modifications and Versioning
 Any updates to the core directive or skills must be pushed to `origin/main` so they can be distributed to users via `git pull`. Use atomic, conventional commits (e.g., `fix(mb): ...`, `feat(audit): ...`).
+
+## 6. Global IDE Compatibility (Cross-IDE Strictness)
+This repository is a global AI agent framework. Whenever you create or modify a skill, you MUST explicitly account for the architectural and file-system differences between major AI IDEs (Antigravity, Cursor, Windsurf, Claude Code). Never write vague or guessing pathing instructions. You must define deterministic, platform-agnostic, and cross-IDE fallback logic for any file manipulation or artifact reading.
