@@ -434,9 +434,10 @@ Search for existing docs and operating files, including but not limited to:
 - `NEXT_ACTIONS.md`
 - `ARCHITECTURE_NOTES.md`
 - `DECISIONS.md`
-- **Any other `*.md` or `*.txt` files** in the repository root or subdirectories that may contain ad-hoc user instructions, guidelines, or notes (e.g., `test.md`, `ornek.md`, `instructions.txt`).
+- **Any other `*.md` or `*.txt` files** in the repository root or subdirectories that may contain ad-hoc user instructions, guidelines, or notes (e.g., `test.md`, `notes.md`, `instructions.txt`).
+- **Legacy Security/Audit rules:** Pay extreme attention to any stray files like `audit.md`, `security_rules.md`, `notice.md`, `remarks.md`, or `rules.md`.
 
-Create a documentation inventory before changing anything.
+Create a documentation inventory before changing anything. Flag any legacy rule files explicitly so they can be merged and archived later to prevent Context Pollution.
 
 ### 1.5 Detect Deployment and CI/CD Files
 
@@ -894,6 +895,8 @@ Include:
 - Deployment boundaries.
 - CI/CD boundaries, if workflow files are detected.
 
+**Legacy Rules Consolidation:** If you found legacy security/audit rules in ad-hoc files during discovery (e.g., `audit.md`, `rules.md`, `notice.md`), analyze them. If they contain valid boundaries, merge their wisdom into this file. If they are harmful or outdated, ignore them. The original ad-hoc files will be archived in Step 4.
+
 Mark unknowns as `Unconfirmed`.
 
 ### 3.11 `.specs/constitution.md`
@@ -1056,6 +1059,8 @@ Example:
 .archive/docs-migration/2026-05-20/agents/DECISIONS.md
 .archive/docs-migration/2026-05-20/docs/old-roadmap.md
 ```
+
+**Context Hygiene Rule:** You MUST move any legacy security, audit, or ad-hoc rule files (e.g., `audit.md`, `notice.md`, `rules.md`, `remarks.md`) to `.archive/docs-migration/<DATE>/` immediately. Do not leave them in their original locations, as they will cause Context Pollution and confuse future AI agents. Even if you extracted good rules from them in Step 3.10, the original files must be archived to maintain `.specs/boundary-conditions.md` as the sole source of truth.
 
 4. Do not archive:
 
