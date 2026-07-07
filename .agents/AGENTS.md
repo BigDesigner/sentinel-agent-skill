@@ -28,3 +28,6 @@ This repository is a global AI agent framework. Whenever you create or modify a 
 
 ## 7. Auto-Sync Sentinel Directive Template (CRITICAL)
 Whenever you modify `skills/sentinel/SKILL.md`, you MUST automatically synchronize those changes to `templates/sentinel-directive.md` without asking the user for permission. `templates/sentinel-directive.md` acts as the raw fallback template for IDEs that do not support native skill execution (like Cursor or Windsurf). Do not let these two files drift apart.
+
+## 8. Absolute English-Only Codebase (Zero Tolerance)
+This framework is distributed globally. Under NO circumstances are you allowed to hardcode non-English strings, fallback messages, variable names, or filenames directly into `SKILL.md` or any repository file. Even if the user is communicating with you in a non-English language and provides localized examples in the chat, you MUST mentally translate them to English before writing them to the codebase. Interactive dynamic responses should be handled in English inside the code, and translated to the user's preferred language only at runtime.
