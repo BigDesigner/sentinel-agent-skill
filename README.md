@@ -76,26 +76,54 @@ Read more about how these phases run in [docs/workflow.md](file:///docs/workflow
 
 ## 🚀 Installation & Usage
 
-### 1. As a Native Antigravity Skill (`/sentinel`)
-If you are using Google Antigravity, you can trigger this entire prompt with a simple slash command:
+### 🟢 Zero Setup — Let Your Agent Install It (For Beginners)
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/BigDesigner/sentinel-agent-memory-bank.git
-   ```
-2. Symlink or copy the `skills/sentinel` folder into your global customization root:
-   * **Windows:** `C:\Users\<Your-Username>\.gemini\config\skills\sentinel`
-   * **Linux/macOS:** `~/.gemini/config/skills/sentinel`
-3. In any Antigravity workspace chat, type **`/sentinel`** to bootstrap or sync the memory bank!
+You don't need to understand what a "skill folder" or a "terminal" is. Just copy the text below for your AI agent and paste it into a new chat. The agent will handle the entire setup.
 
-### 2. In Cursor or Windsurf (Global System Rules)
-To make your agent behave like a Sentinel-equipped assistant in Cursor or Windsurf:
+**For Claude Code:**
+> Install sentinel skills: run `git clone --depth 1 https://github.com/BigDesigner/sentinel-agent-skill.git ~/.claude/skills/sentinel-agent-skill` then tell me what slash commands are now available.
 
-1. Copy the full content of [templates/sentinel-directive.md](file:///templates/sentinel-directive.md).
-2. Paste it into your IDE's system rules settings:
-   * **Cursor:** `Settings -> Rules for AI`
-   * **Windsurf:** Cascade settings file.
-3. Your agent will now automatically search for and maintain your `.memory-bank` structure across every project you open.
+**For Google Antigravity (Windows):**
+> Install sentinel skills: run `git clone --depth 1 https://github.com/BigDesigner/sentinel-agent-skill.git "$env:USERPROFILE\.gemini\config\skills\sentinel-agent-skill"` then tell me what slash commands are now available.
+
+**For Cursor or Windsurf:**
+> Since Cursor and Windsurf do not currently support native skill execution, open the `templates/sentinel-directive.md` file from this repo, copy all of its text, and paste it into your IDE's global rules (e.g., Settings → Rules for AI). Then simply type `/sentinel` in a new chat to begin.
+
+---
+
+### 🛠️ Advanced / Manual Installation
+
+For power users who prefer to install the skills manually into their respective agent config directories:
+
+| Platform | Install Path |
+|---|---|
+| **Claude Code** | `~/.claude/skills/sentinel-agent-skill/` |
+| **Antigravity (Windows)** | `%USERPROFILE%\.gemini\config\skills\sentinel-agent-skill\` |
+| **Antigravity (Mac/Linux)** | `~/.gemini/config/skills/sentinel-agent-skill/` |
+| **Cursor** | `~/.cursor/skills/sentinel-agent-skill/` |
+| **Windsurf** | `~/.windsurf/skills/sentinel-agent-skill/` |
+| **OpenAI Codex** | `~/.codex/skills/sentinel-agent-skill/` |
+
+**Manual Install Command (Example for Mac/Linux Antigravity):**
+```bash
+git clone https://github.com/BigDesigner/sentinel-agent-skill.git ~/.gemini/config/skills/sentinel-agent-skill
+```
+
+---
+
+### ⚡ Available Skills
+
+Once installed, you can trigger specific workflows using the following commands:
+
+| Command | Purpose |
+|---|---|
+| **`/sentinel`** | Full 7-step bootstrap (Analyzes codebase, reorganizes folders, writes specs). |
+| **`/sentinel-mb`** | Initializes or syncs only the `.memory-bank/` structure and active session state. |
+| **`/sentinel-scan`** | Scans all `*.md` / `*.txt` files in the repo and outputs a categorized inventory. |
+| **`/sentinel-audit`** | Runs a report-only security audit against `.specs/security-standards.md`. |
+| **`/sentinel-handoff`** | Updates `handoff.md` and `active-session.json` to transition to a new session. |
+
+---
 
 ### 3. As a One-Time Bootstrapper
 If you just want to organize a messy, flat project:
