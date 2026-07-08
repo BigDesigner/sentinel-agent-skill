@@ -526,7 +526,13 @@ Summary of proposed actions:
 Risks / items requiring approval:
 - ...
 
-Do you approve continuing?
+---
+
+**Language Check:** If the memory bank is being initialized or if `preferred_language` is `Unconfirmed`, you MUST append this exact question at the bottom of your report:
+*"Which language would you prefer for our interactive chats and reports? (e.g., English, Turkish, Spanish, German). Note that all project files and memory bank documents will always remain in English."*
+
+If the language is already confirmed, simply ask:
+*"Do you approve continuing?"*
 ```
 
 In Interactive mode, do not proceed to Step 2 without explicit user approval.
