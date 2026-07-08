@@ -22,8 +22,9 @@ This skill focuses solely on creating or updating the memory bank structural ele
      - `.memory-bank/audits/`
      - `.memory-bank/bugs/`
 
-3. **Initialize `active-session.json`**
-   - If `.memory-bank/active-session.json` does not exist, create it with:
+3. **Initialize `active-session.json` (Atomic Operation)**
+   - **CRITICAL LOCK RULE:** Before proceeding, check for `.memory-bank/.session.lock`. If present, halt and wait. Create `.session.lock` before starting file operations.
+   - If `.memory-bank/active-session.json` does not exist, create it via a temporary file `active-session.tmp.json` first, then rename it to overwrite:
      ```json
      {
        "session_id": "<generate-uuid-v4>",
@@ -32,7 +33,8 @@ This skill focuses solely on creating or updating the memory bank structural ele
        "status": "active"
      }
      ```
-   - If it does exist, update the `last_active` timestamp to the current time.
+   - If it does exist, read it, update the `last_active` timestamp to the current time, write to `active-session.tmp.json`, and perform an atomic rename/move to `active-session.json`.
+   - Delete `.memory-bank/.session.lock`.
 
 4. **Completion Report**
    - Confirm to the user that the memory bank is initialized and synced successfully.

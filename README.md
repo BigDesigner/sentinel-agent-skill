@@ -150,6 +150,17 @@ If you just want to organize a messy, flat project:
 
 ---
 
+## 🛡️ Enterprise Security Architecture
+
+Sentinel enforces strict operational boundaries to ensure autonomous agents run safely, predictably, and securely in long-running projects:
+
+*   **Prompt Injection Shield:** Sentinel's primary read directives explicitly classify untrusted documentation and arbitrary markdown files as raw data, completely neutralizing malicious "jailbreak" or prompt injection attacks designed to override agent goals.
+*   **Atomic State Management:** Multi-agent race conditions are prevented using strict OS-level locks (`.session.lock`) and atomic `.tmp.json` file writes when modifying the active session state.
+*   **Context Window Protection:** To prevent "attention drop" and infinite token scaling, Sentinel automatically performs Log Rotation on continuous files (like `handoff.md` and `verified-worklog.md`). If files exceed 300 lines or 10 entries, old context is archived.
+*   **Sandbox Violation Prevention:** Auditing skills restrict filesystem lookups exclusively to the local workspace, avoiding crashes or sandbox escape attempts in restricted Docker or Cloud IDE environments.
+
+---
+
 ## 💬 AI Communication Standards (No Fluff)
 
 Sentinel configures your workspace to enforce clean, direct agent interactions via `.agents/AGENTS.md`. When initialized, agents are bound by the following communication constraints:

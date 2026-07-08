@@ -12,19 +12,22 @@ This skill is designed to be run at the end of a work session. It quickly captur
 
 ## Execution Steps
 
-1. **Update `active-session.json`**
+1. **Update `active-session.json` (Atomic)**
+   - **LOCK:** Create `.memory-bank/.session.lock`.
    - Read `.memory-bank/active-session.json`.
    - Generate a new `session_id` (UUID v4).
    - Update `last_active` to the current ISO-8601 timestamp.
-   - Save the file.
+   - Write to `active-session.tmp.json`, then atomically rename to `active-session.json`.
+   - **UNLOCK:** Delete `.memory-bank/.session.lock`.
 
-2. **Update `handoff.md`**
+2. **Update `handoff.md` (With Context Pruning)**
    - Read `.tasks/handoff.md`.
    - Record the current Git branch and the last commit hash/message.
    - Summarize the key actions completed in the current session based **ONLY on actual repository code/file changes.**
    - **CRITICAL BOUNDARY:** DO NOT include global agent configurations, IDE setups, or out-of-scope chat discussions in the project's handoff document. Keep the summary strictly focused on what was modified in this specific codebase.
    - Note any open issues or immediate next steps for the incoming agent.
-   - Append this new entry to the top of the handoff history.
+   - **PRUNING RULE:** Before appending, check the length of `handoff.md`. If it contains more than 10 session entries (or exceeds roughly 200 lines), extract the oldest entries, summarize them into a single paragraph, and archive the raw entries into `.archive/docs-migration/handoff-archive-<DATE>.md`.
+   - Append this new entry to the top of the active handoff history.
 
 3. **Output Summary**
    - Provide a brief summary of the handoff state to the user, confirming that the session has been successfully packaged.
