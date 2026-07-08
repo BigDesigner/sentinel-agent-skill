@@ -125,6 +125,16 @@ Once installed, you can trigger specific workflows using the following commands:
 
 ---
 
+### ⏯️ Session Resume vs Re-initialization
+
+By default, if you run `/sentinel` in a project that already has a `.memory-bank/active-session.json` file, Sentinel will perform a **Session Resume**. It will silently update the active session lock and proceed directly to your current task without asking for discovery approvals again.
+
+If you want to force Sentinel to forget the current session state and run the full discovery and approval process from scratch, you must instruct the agent to **re-initialize**.
+You can do this by saying:
+> *"/sentinel please run a full re-initialization and ignore the existing session."*
+
+---
+
 ### 🔄 How to Update
 
 Since Sentinel is installed via Git, updates are fast and easy. 
