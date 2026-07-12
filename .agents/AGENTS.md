@@ -36,3 +36,6 @@ However, **all interactive chat responses, direct explanations, and generated Ma
 
 ## 9. Auto-Sync Custom Rules Template
 Whenever you modify this `.agents/AGENTS.md` file, you MUST automatically evaluate and synchronize those changes to `templates/custom-rules-template.md` without asking the user for permission. `templates/custom-rules-template.md` acts as the raw fallback template for custom IDE rules. Do not let these two core rule sets drift apart.
+
+## 10. Destructive Skill Safety (disable-model-invocation)
+Any skill that can destroy state, delete files, or mutate session records (currently `sentinel-rescue`, `sentinel-prune`, and `sentinel-handoff`) MUST declare `disable-model-invocation: true` in its SKILL.md frontmatter. This ensures Claude Code never auto-triggers these skills via description matching — they can only be invoked explicitly by the user typing the slash command. IDEs that do not recognize this field ignore it safely, so the flag is cross-IDE harmless. Apply this rule to every future skill that performs deletion, git resets, or state mutation.

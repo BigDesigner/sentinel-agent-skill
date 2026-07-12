@@ -21,7 +21,7 @@ This skill focuses solely on creating or updating the memory bank structural ele
      - `.memory-bank/bugs/`
 
 3. **Initialize `active-session.json` (Atomic Operation)**
-   - **CRITICAL LOCK RULE:** Before proceeding, check for `.memory-bank/.session.lock`. If present, halt and wait. Create `.session.lock` before starting file operations.
+   - **CRITICAL LOCK RULE:** Before proceeding, check for `.memory-bank/.session.lock`. If present and modified within the last 10 minutes, halt and wait. If it is older than 10 minutes, treat it as a stale lock from a crashed session: delete it and proceed. Create `.session.lock` before starting file operations.
    - If `.memory-bank/active-session.json` does not exist, create it via a temporary file `active-session.tmp.json` first, then rename it to overwrite:
       ```json
       {

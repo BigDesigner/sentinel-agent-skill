@@ -114,7 +114,7 @@ Once installed, you can trigger specific workflows using the following commands:
 | **`/sentinel-mb`** | Initializes or syncs only the `.memory-bank/` structure and active session state. |
 | **`/sentinel-scan`** | Scans the repository for all `*.md` and `*.txt` files and outputs a categorized documentation inventory. |
 | **`/sentinel-audit`** | Audits the codebase against `.specs/boundary-conditions.md` rules and provides a **report-only** security verdict. |
-| **`/sentinel-handoff`**| Wraps up a work session. Syncs `active-session.json`, updates `handoff.md` with only codebase changes, and pushes to git. |
+| **`/sentinel-handoff`**| Wraps up a work session. Syncs `active-session.json` and updates `handoff.md` with only codebase changes. Commit/push is proposed, never automatic. |
 | **`/sentinel-planaudit`** | Acts as a Senior Architect. Auto-reviews and hardens implementation plans against project specs before execution. |
 | **`/sentinel-clarify`** | Interrogates the user to resolve underspecified requirements and potential boundary violations before planning or coding begins. |
 | **`/sentinel-drift`** | Detects discrepancies between the established architecture and the actual implementation (e.g. rogue packages, orphaned files). |
@@ -124,6 +124,7 @@ Once installed, you can trigger specific workflows using the following commands:
 | **`/sentinel-rescue`** | Hard-resets the project and memory bank back to the last known coherent state in case of severe hallucinations or corruption. |
 | **`/sentinel-brief`** | Generates a single-page onboarding summary (State of the Union) for humans or agents migrating between environments. |
 | **`/sentinel-prune`** | Safely cleans up bloated dependency/build folders (node_modules, .venv, target) and optimizes package managers (pnpm, uv). |
+| **`/sentinel-doctor`** | Runs a deterministic integrity check on the memory bank (schema, stale locks, log rotation, archive consistency) and offers guided repairs. |
 
 ---
 

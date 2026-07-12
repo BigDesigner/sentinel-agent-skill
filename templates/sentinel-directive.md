@@ -672,7 +672,9 @@ Create or update the session state.
 
 **CRITICAL I/O RULE (Atomic Writes):** Never write directly to `active-session.json`. You must write your updates to a temporary file named `active-session.tmp.json` first. Only after the write is successful, rename/move the temporary file to overwrite `active-session.json`. 
 
-**CRITICAL LOCKING RULE:** Before reading or writing, check for the existence of `.memory-bank/.session.lock`. If it exists, halt execution and wait for it to clear. When you begin a task, create `.session.lock`. When you finish, delete `.session.lock`.
+**CRITICAL LOCKING RULE:** Before reading or writing, check for the existence of `.memory-bank/.session.lock`. If it exists and was modified within the last 10 minutes, halt execution and wait for it to clear. When you begin a task, create `.session.lock`. When you finish, delete `.session.lock`.
+
+**STALE LOCK PROTOCOL:** If `.session.lock` exists but its file modification timestamp is older than 10 minutes, treat it as an orphaned lock left behind by a crashed session: record a warning in `.memory-bank/bugs/bug-list.md` as `Unconfirmed / Environment Warning`, delete the stale lock, and proceed. Never wait indefinitely on a lock that is not being actively refreshed.
 
 ```json
 {

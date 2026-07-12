@@ -1,6 +1,7 @@
 ---
 name: sentinel-handoff
 description: Updates the session state and handoff document for transitioning between work sessions.
+disable-model-invocation: true
 ---
 
 # `sentinel-handoff` Skill
@@ -11,7 +12,7 @@ This skill is designed to be run at the end of a work session. It quickly captur
 ## Execution Steps
 
 1. **Update `active-session.json` (Atomic)**
-   - **LOCK:** Create `.memory-bank/.session.lock`.
+   - **LOCK:** Check for `.memory-bank/.session.lock`. If present and modified within the last 10 minutes, halt and wait; if it is older than 10 minutes, treat it as a stale lock from a crashed session and delete it. Then create `.memory-bank/.session.lock`.
    - Read `.memory-bank/active-session.json`.
    - Generate a new `session_id` (UUID v4).
    - Update `timestamp` to the current ISO-8601 timestamp.

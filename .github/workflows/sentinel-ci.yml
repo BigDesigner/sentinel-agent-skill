@@ -1,0 +1,48 @@
+name: Sentinel Framework CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # AGENTS.md Rule 7: the core directive and the raw fallback template must never drift apart.
+      - name: Verify core directive and template are in sync
+        run: |
+          if ! diff -q skills/sentinel/SKILL.md templates/sentinel-directive.md; then
+            echo "::error::skills/sentinel/SKILL.md and templates/sentinel-directive.md have drifted apart (AGENTS.md Rule 7)."
+            diff skills/sentinel/SKILL.md templates/sentinel-directive.md || true
+            exit 1
+          fi
+
+      - name: Verify every skill has valid frontmatter
+        run: |
+          fail=0
+          for f in skills/*/SKILL.md; do
+            if ! head -n 10 "$f" | grep -q '^name:'; then
+              echo "::error file=$f::missing 'name' frontmatter"
+              fail=1
+            fi
+            if ! head -n 10 "$f" | grep -q '^description:'; then
+              echo "::error file=$f::missing 'description' frontmatter"
+              fail=1
+            fi
+            if grep -q '^triggers:' "$f"; then
+              echo "::error file=$f::defunct 'triggers:' frontmatter must not be reintroduced"
+              fail=1
+            fi
+          done
+          exit $fail
+
+      # AGENTS.md Rule 2: canonical directory names only (changelog singular, audits plural).
+      - name: Verify canonical memory-bank directory naming
+        run: |
+          if grep -rn --include='*.md' -E '\.memory-bank/(changelogs|audit-reports)/' skills/ templates/ docs/ README.md; then
+            echo "::error::non-canonical memory-bank directory name detected (AGENTS.md Rule 2)"
+            exit 1
+          fi

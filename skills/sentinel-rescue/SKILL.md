@@ -1,6 +1,7 @@
 ---
 name: sentinel-rescue
 description: Hard-resets the project and memory bank back to the last known coherent state in case of severe hallucinations or corruption.
+disable-model-invocation: true
 ---
 
 # `sentinel-rescue` Skill
