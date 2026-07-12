@@ -1,9 +1,6 @@
 ---
 name: sentinel-planaudit
 description: Automatically reviews, hardens, and validates an existing implementation plan against project specs and security rules before execution.
-triggers:
-  - /sentinel-planaudit
-  - /sentinel-pa
 ---
 
 # `sentinel-planaudit` Skill

@@ -1,8 +1,6 @@
 ---
 name: sentinel-brief
 description: Generates a single-page onboarding summary (State of the Union) for humans or agents migrating between environments.
-triggers:
-  - /sentinel-brief
 ---
 
 # `sentinel-brief` Skill

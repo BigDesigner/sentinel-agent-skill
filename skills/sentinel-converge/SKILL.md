@@ -1,8 +1,6 @@
 ---
 name: sentinel-converge
 description: Compares the implemented codebase against the implementation plan to autonomously append missing or unfinished tasks.
-triggers:
-  - /sentinel-converge
 ---
 
 # `sentinel-converge` Skill

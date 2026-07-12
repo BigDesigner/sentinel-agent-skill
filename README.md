@@ -35,11 +35,13 @@ Sentinel organizes your repository's meta-context into four primary operational 
 │   ├── system-coherence.md # Automated verification checklist
 │   ├── migration-map.md    # Tracks old files archived or reorganized
 │   ├── adr/                # Architecture Decision Records (ADRs)
-│   └── changelog/          # Change logs and verified worklogs
+│   ├── changelog/          # Change logs and verified worklogs
+│   └── state-of-the-union.md # Distilled context onboarding summary
 ├── 📁 .specs/              # Project technical specifications
 │   ├── bootstrap.md        # Setup, installation, and build commands
 │   ├── boundary-conditions.md # Technical limitations and safety budgets
 │   ├── constitution.md     # Code quality and development standards
+│   └── preflight-checklist.md # Persistent release & operator checklist
 ├── 📁 .agents/             # AI agent runtime customizations
 │   ├── AGENTS.md           # Project-scoped AI behavior and rules (No Fluff)
 │   └── runtime-manifest.json # Runtime configuration and permission boundaries

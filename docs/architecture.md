@@ -15,12 +15,14 @@ This document describes the structure and file layout initialized by the Sentine
 │   ├── adr/                # Architecture Decision Records (ADRs)
 │   ├── changelog/          # Change logs and verified worklogs
 │   ├── audits/             # Security reports and structural audits
-│   └── bugs/               # List of verified and unconfirmed bugs
+│   ├── bugs/               # List of verified and unconfirmed bugs
+│   └── state-of-the-union.md # Distilled context briefing (onboarding summary)
 │
 ├── .specs/                 # Project technical specifications
 │   ├── bootstrap.md        # Setup, installation, and build commands
 │   ├── boundary-conditions.md # Technical limitations and safety budgets
 │   ├── constitution.md     # Code quality and development standards
+│   └── preflight-checklist.md # Persistent release & operator checklist
 │
 ├── .agents/                # AI agent runtime customizations
 │   ├── AGENTS.md           # Project-scoped AI behavior and rules (No Fluff)

@@ -1,8 +1,6 @@
 ---
 name: sentinel-drift
 description: Detects discrepancies between the established architecture and the actual implementation (e.g. rogue packages, orphaned files).
-triggers:
-  - /sentinel-drift
 ---
 
 # `sentinel-drift` Skill

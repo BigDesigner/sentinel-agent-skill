@@ -1,8 +1,6 @@
 ---
 name: sentinel-rescue
 description: Hard-resets the project and memory bank back to the last known coherent state in case of severe hallucinations or corruption.
-triggers:
-  - /sentinel-rescue
 ---
 
 # `sentinel-rescue` Skill
@@ -13,6 +11,7 @@ This skill acts as an Emergency Recovery Bot. In autonomous agentic systems, AI 
 ## Execution Steps
 
 ### 1. Locate the Last Healthy State
+- **Permission Boundaries Check:** Read `.agents/runtime-manifest.json` if it exists. Ensure the recovery process respects the manifest settings, noting any restrictions on `restricted_paths` or `write_allowed_paths` before initiating git commands.
 - Read `.tasks/handoff.md`.
 - Identify the most recent successful, user-approved session handoff commit hash.
 

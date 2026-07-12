@@ -1,8 +1,6 @@
 ---
 name: sentinel-prune
 description: Safely cleans up bloated dependency/build folders (e.g. node_modules, .venv, target) and optimizes new projects to use space-efficient package managers (pnpm, uv).
-triggers:
-  - /sentinel-prune
 ---
 
 # `sentinel-prune` Skill
@@ -15,6 +13,7 @@ This skill acts as a Developer Environment Space Optimizer and Dependency Garbag
 ## Execution Steps
 
 ### 1. Identify Bloat Candidates
+- **Permission Boundaries Check:** Read `.agents/runtime-manifest.json` if it exists. Verify that any directories targeted for deletion are inside the `write_allowed_paths` manifest (if defined) and do NOT conflict with any `restricted_paths` settings. Strictly reject pruning any restricted paths.
 - Scan the project workspace for the following dependency and build structures:
   - **Node/JS:** `node_modules/`, `.svelte-kit/`, `.next/`, `dist/`, `.turbo/`
   - **Python:** `.venv/`, `venv/`, `__pycache__/`, `.pytest_cache/`, `.mypy_cache/`

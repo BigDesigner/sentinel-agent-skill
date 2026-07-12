@@ -686,11 +686,6 @@ Create or update the session state.
   "last_commit": "CURRENT_COMMIT_HASH_OR_NULL",
   "git_history_available": true,
   "worktree_status": "clean",
-  "concurrency_lock": {
-    "is_locked": false,
-    "locked_by": null,
-    "lock_acquired_at": null
-  },
   "current_sprint": {
     "sprint_id": "v0.1.0-alpha",
     "active_tasks": []

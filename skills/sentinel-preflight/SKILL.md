@@ -1,8 +1,6 @@
 ---
 name: sentinel-preflight
 description: Audits the deployment environment, external dependencies, CI/CD pipelines, and secrets before allowing a commit or release.
-triggers:
-  - /sentinel-preflight
 ---
 
 # `sentinel-preflight` Skill

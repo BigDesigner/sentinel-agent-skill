@@ -1,8 +1,6 @@
 ---
 name: sentinel-clarify
 description: Interrogates the user to resolve underspecified requirements and potential boundary violations before planning or coding begins.
-triggers:
-  - /sentinel-clarify
 ---
 
 # `sentinel-clarify` Skill
