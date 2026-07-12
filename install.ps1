@@ -3,7 +3,7 @@
 $ClaudeSkillsDir = Join-Path $env:USERPROFILE ".claude\skills"
 $RepoDir = $PSScriptRoot
 
-Write-Host "🛡️ Installing Sentinel Skills into Claude Code..." -ForegroundColor Windows
+Write-Host "🛡️ Installing Sentinel Skills into Claude Code..." -ForegroundColor Cyan
 
 # Create directory if it doesn't exist
 if (-not (Test-Path $ClaudeSkillsDir)) {
