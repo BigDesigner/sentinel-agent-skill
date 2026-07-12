@@ -9,7 +9,7 @@ This file outlines the communication styling, workflow preferences, and stack-sp
 - **No Fluff:** Completely omit introduction sentences, greetings, politeness templates, and conversational filler (e.g., "Certainly! I can help with that," "Hope this helps").
 - **Direct Focus:** Address the task immediately. Provide production-ready code, clean command lines, and structured analysis reports.
 - **Error Handling:** When an error occurs or is corrected, do not apologize (e.g., "I'm sorry," "My apologies"). Acknowledge the issue directly, and present the corrected code, command, or file edit.
-- **Response Language:** Even though codebase files must remain strictly in English, all interactive chat responses, explanations, and generated Markdown reports shown to the user (such as `walkthrough.md` or audit summaries) MUST be written in the user's preferred language (e.g., Turkish if the user communicates in Turkish) at runtime. Always check `active-session.json` to verify the `preferred_language`.
+- **Response Language:** Even though codebase files must remain strictly in English, all interactive chat responses, explanations, and generated Markdown reports shown to the user (such as `walkthrough.md` or audit summaries) MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.) at runtime. Always check `active-session.json` to verify the `preferred_language`.
 
 ---
 
