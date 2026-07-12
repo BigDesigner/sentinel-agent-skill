@@ -32,6 +32,7 @@ This skill acts as a Developer Environment Space Optimizer and Dependency Garbag
 - Recommend optimizations:
   - If `npm` or `yarn` is detected, suggest migrating to `pnpm` (which uses a single global content-addressable store to prevent directory duplication).
   - If standard Python `pip` or virtual envs are detected, suggest migrating to `uv` (which shares links and caches globally).
+- **CI/CD & Infrastructure Synchronization (CRITICAL):** If a package manager migration is approved, the skill MUST automatically scan and update the project's CI/CD workflows (e.g., `.github/workflows/*.yml`), Dockerfiles, and build/deploy scripts to use the new package manager commands, caching setups, and lockfiles (e.g., changing `npm ci` to `pnpm install --frozen-lockfile` or setting up `pnpm/action-setup`). Never leave CI pipelines pointing to deprecated lockfiles.
 - If the user consents, inject appropriate agent rules into `.agents/AGENTS.md` to mandate these optimized tools for all future packages.
 
 ### 4. Execution & Verification
