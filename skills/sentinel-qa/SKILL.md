@@ -1,8 +1,6 @@
 ---
 name: sentinel-qa
 description: Autonomously writes Red Team unit and integration tests designed to aggressively break the boundary conditions and security rules.
-triggers:
-  - /sentinel-qa
 ---
 
 # `sentinel-qa` Skill

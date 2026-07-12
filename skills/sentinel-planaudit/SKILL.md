@@ -6,7 +6,7 @@ description: Automatically reviews, hardens, and validates an existing implement
 # `sentinel-planaudit` Skill
 
 ## Overview
-The `sentinel-planaudit` (or `/sentinel-pa`) skill acts as a "Senior Architect" to review a proposed implementation plan. It cross-references the proposed plan against the project's memory bank, security constraints, and architecture rules to detect flaws, hallucinations, or violations before any code is modified.
+The `sentinel-planaudit` skill acts as a "Senior Architect" to review a proposed implementation plan. It cross-references the proposed plan against the project's memory bank, security constraints, and architecture rules to detect flaws, hallucinations, or violations before any code is modified.
 
 **CRITICAL RULE:** This skill MUST NOT modify any application source code. It only reads the specs and modifies the **plan document** itself.
 

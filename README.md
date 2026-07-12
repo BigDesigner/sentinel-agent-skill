@@ -115,7 +115,7 @@ Once installed, you can trigger specific workflows using the following commands:
 | **`/sentinel-scan`** | Scans the repository for all `*.md` and `*.txt` files and outputs a categorized documentation inventory. |
 | **`/sentinel-audit`** | Audits the codebase against `.specs/boundary-conditions.md` rules and provides a **report-only** security verdict. |
 | **`/sentinel-handoff`**| Wraps up a work session. Syncs `active-session.json`, updates `handoff.md` with only codebase changes, and pushes to git. |
-| **`/sentinel-planaudit`**| *(Alias: `/sentinel-pa`)* Acts as a Senior Architect. Auto-reviews and hardens implementation plans against project specs before execution. |
+| **`/sentinel-planaudit`** | Acts as a Senior Architect. Auto-reviews and hardens implementation plans against project specs before execution. |
 | **`/sentinel-clarify`** | Interrogates the user to resolve underspecified requirements and potential boundary violations before planning or coding begins. |
 | **`/sentinel-drift`** | Detects discrepancies between the established architecture and the actual implementation (e.g. rogue packages, orphaned files). |
 | **`/sentinel-converge`** | Compares the implemented codebase against the implementation plan to autonomously append missing or unfinished tasks. |
