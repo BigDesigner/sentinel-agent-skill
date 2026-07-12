@@ -129,6 +129,7 @@ Once installed, you can trigger specific workflows using the following commands:
 | **`/sentinel-preflight`** | Audits the deployment environment, external dependencies, CI/CD pipelines, and secrets before allowing a commit or release. |
 | **`/sentinel-rescue`** | Hard-resets the project and memory bank back to the last known coherent state in case of severe hallucinations or corruption. |
 | **`/sentinel-brief`** | Generates a single-page onboarding summary (State of the Union) for humans or agents migrating between environments. |
+| **`/sentinel-prune`** | Safely cleans up bloated dependency/build folders (node_modules, .venv, target) and optimizes package managers (pnpm, uv). |
 
 ---
 
