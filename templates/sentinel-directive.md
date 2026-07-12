@@ -108,7 +108,7 @@ All responses, reports, and generated documents must follow these quality rules 
 ### Language Rules for Responses
 
 - All generated project files (under `.memory-bank/`, `.specs/`, `.agents/`, `.tasks/`) must be in **English** for team-wide standardization.
-- All interactive messages, reports, explanations, and conversations with the user must be in the user's **preferred language**.
+- All interactive reports and chat responses MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.) at runtime as specified in active-session.json.
 - **Preferred Language Bootstrapping:** 
   1. The preferred language is tracked in `.memory-bank/active-session.json` under the `preferred_language` key.
   2. If the memory bank is being initialized, or if `preferred_language` is `Unconfirmed`, the agent MUST ask the user in their very first response: *"Which language would you prefer for our interactive chats and reports? (e.g., English, Turkish, Spanish, German). Note that all project files and memory bank documents will always remain in English."*
