@@ -125,6 +125,7 @@ Once installed, you can trigger specific workflows using the following commands:
 | **`/sentinel-brief`** | Generates a single-page onboarding summary (State of the Union) for humans or agents migrating between environments. |
 | **`/sentinel-prune`** | Safely cleans up bloated dependency/build folders (node_modules, .venv, target) and optimizes package managers (pnpm, uv). |
 | **`/sentinel-doctor`** | Runs a deterministic integrity check on the memory bank (schema, stale locks, log rotation, archive consistency) and offers guided repairs. |
+| **`/sentinel-coauth`** | Injects a rule prohibiting agents from appending "Co-Authored-By" trailers to commits or code blocks. |
 
 ---
 
