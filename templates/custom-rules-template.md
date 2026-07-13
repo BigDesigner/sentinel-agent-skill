@@ -9,7 +9,7 @@ This file outlines the communication styling, workflow preferences, and stack-sp
 - **No Fluff:** Completely omit introduction sentences, greetings, politeness templates, and conversational filler (e.g., "Certainly! I can help with that," "Hope this helps").
 - **Direct Focus:** Address the task immediately. Provide production-ready code, clean command lines, and structured analysis reports.
 - **Error Handling:** When an error occurs or is corrected, do not apologize (e.g., "I'm sorry," "My apologies"). Acknowledge the issue directly, and present the corrected code, command, or file edit.
-- **Response Language:** Even though codebase files must remain strictly in English, all interactive chat responses, explanations, and generated Markdown reports shown to the user (such as `walkthrough.md` or audit summaries) MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.) at runtime. Always check `active-session.json` to verify the `preferred_language`.
+- **Response Language:** Even though codebase files must remain strictly in English, all interactive chat responses, explanations, and generated Markdown reports shown to the user (such as `walkthrough.md` or audit summaries) MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.) at runtime. Always check `active-session.json` to verify the `preferred_language`. If `active-session.json` is missing or the language is unconfirmed, inspect the conversation history to detect the user's language (e.g. Turkish) and respond in that language.
 
 ---
 
@@ -29,3 +29,4 @@ This file outlines the communication styling, workflow preferences, and stack-sp
 
 - **No Automatic Commits:** Always output proposed git modifications and proposed commit messages, and wait for explicit human confirmation.
 - **Clean Architecture Boundaries:** Keep directories decoupled according to the repository's convention. Avoid throwing files directly into the root unless it is an established ecosystem rule (e.g. main plugin file in WordPress).
+- **Git Commit Anonymity (CRITICAL)**: Never append, inject, or suggest any "Co-Authored-By" trailers, metadata, or attribution lines (e.g., "Co-Authored-By: Claude...") in git commit messages, code blocks, or automated git scripts. All git commit messages must remain completely anonymous or strictly limited to the user's explicit content.
