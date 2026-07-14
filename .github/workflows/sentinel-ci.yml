@@ -9,7 +9,7 @@ jobs:
   integrity:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # AGENTS.md Rule 7: the core directive and the raw fallback template must never drift apart.
       - name: Verify core directive and template are in sync
