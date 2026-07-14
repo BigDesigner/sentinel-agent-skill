@@ -126,6 +126,7 @@ Once installed, you can trigger specific workflows using the following commands:
 | **`/sentinel-prune`** | Safely cleans up bloated dependency/build folders (node_modules, .venv, target) and optimizes package managers (pnpm, uv). |
 | **`/sentinel-doctor`** | Runs a deterministic integrity check on the memory bank (schema, stale locks, log rotation, archive consistency) and offers guided repairs. |
 | **`/sentinel-coauth`** | Injects a rule prohibiting agents from appending "Co-Authored-By" trailers to commits or code blocks. |
+| **`/sentinel-help`** | Displays a comprehensive help menu and command catalog in the user's preferred language, highlighting safety classifications. |
 
 ---
 
