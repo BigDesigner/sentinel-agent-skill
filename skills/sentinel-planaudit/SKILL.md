@@ -1,6 +1,10 @@
 ---
 name: sentinel-planaudit
-description: Automatically reviews, hardens, and validates an existing implementation plan against project specs and security rules before execution.
+description: >-
+  Audits and hardens a proposed implementation plan against project security and architectural rules.
+  Reads the plan file (or generates one), cross-references .specs/boundary-conditions.md and .specs/constitution.md,
+  and directly modifies the plan to add security controls and audit notes.
+  Use when asked to review my plan, audit or harden a plan, run a plan analysis, or verify implementation steps before writing code.
 ---
 
 # `sentinel-planaudit` Skill

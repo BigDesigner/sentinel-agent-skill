@@ -1,6 +1,10 @@
 ---
 name: sentinel-qa
-description: Autonomously writes Red Team unit and integration tests designed to aggressively break the boundary conditions and security rules.
+description: >-
+  Autonomously designs and writes negative Red Team unit/integration tests to test security boundaries.
+  Reads .specs/boundary-conditions.md to extract limitations, analyzes codebase structures, and writes
+  test scripts directly to the tests/ directory.
+  Use when asked to write security tests, perform red team testing, write boundary condition tests, or create negative tests.
 ---
 
 # `sentinel-qa` Skill

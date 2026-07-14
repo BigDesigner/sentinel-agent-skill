@@ -1,6 +1,10 @@
 ---
 name: sentinel-audit
-description: Scans source files for security violations against the project's security standards. Report-only.
+description: >-
+  Perform a report-only security audit of the source code against the project's security contract.
+  Reads .specs/boundary-conditions.md to load escaping rules, banned functions, and sanitization requirements,
+  then scans source files for violations. Writes the report to .memory-bank/audits/audit-<short-commit-hash>.md.
+  Use when asked to run a security audit, verify vulnerabilities against standards, or check code boundary conditions.
 ---
 
 # `sentinel-audit` Skill

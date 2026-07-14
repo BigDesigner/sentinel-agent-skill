@@ -1,6 +1,10 @@
 ---
 name: sentinel-handoff
-description: Updates the session state and handoff document for transitioning between work sessions.
+description: >-
+  Updates the session state and prunes the multi-agent handoff transition logs.
+  Reads and modifies .tasks/handoff.md, writes atomic state changes to .memory-bank/active-session.json,
+  and archives old entries into .archive/docs-migration/<YYYY-MM-DD>/handoff.md.
+  Only run when the user explicitly invokes the command. Do not auto-trigger.
 disable-model-invocation: true
 ---
 

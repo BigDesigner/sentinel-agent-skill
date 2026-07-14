@@ -1,6 +1,10 @@
 ---
 name: sentinel-rescue
-description: Hard-resets the project and memory bank back to the last known coherent state in case of severe hallucinations or corruption.
+description: >-
+  Destructive recovery protocol: executes git reset --hard and wipes all untracked files.
+  Reads .tasks/handoff.md to identify the last healthy user-approved session commit.
+  Permanently destroys all local modifications and uncommitted progress since the last successful handoff.
+  Only run when the user explicitly invokes the command. Do not auto-trigger.
 disable-model-invocation: true
 ---
 

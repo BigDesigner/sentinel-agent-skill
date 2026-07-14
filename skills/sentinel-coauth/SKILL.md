@@ -1,6 +1,9 @@
 ---
 name: sentinel-coauth
-description: Injects a rule prohibiting agents from appending "Co-Authored-By" trailers to commits or code blocks.
+description: >-
+  Injects a strict rule to ensure git commit messages remain anonymous or limited to the user's content.
+  Reads and modifies .agents/AGENTS.md to add the Git Commit Anonymity Rule.
+  Only run when the user explicitly invokes the command. Do not auto-trigger.
 disable-model-invocation: true
 ---
 

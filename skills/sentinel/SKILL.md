@@ -1,6 +1,10 @@
 ---
 name: sentinel
-description: "Bootstraps and syncs the Sentinel Agent Memory Bank, custom agent rules, and security standards for the workspace."
+description: >-
+  Executes the full 7-step bootstrap procedure to initialize or migrate a project to the Sentinel Agent Memory Bank.
+  Creates .memory-bank/, .specs/, .agents/, and .tasks/ directories and templates.
+  Generates system-coherence.md and active-session.json configurations.
+  Use when asked to initialize a new repository, migrate project memory, bootstrap active context, or setup agent rules.
 ---
 
 # SYSTEM DIRECTIVE: Sentinel Agent Memory Bank Initialization & Migration

@@ -1,6 +1,10 @@
 ---
 name: sentinel-converge
-description: Compares the implemented codebase against the implementation plan to autonomously append missing or unfinished tasks.
+description: >-
+  Compares the actual implemented codebase files against the approved implementation plan to append missing tasks.
+  Reads implementation_plan.md and task.md, analyzes code modifications, and updates pipeline.md or task.md
+  with converged tasks.
+  Use when asked to verify task completion, check if we missed anything from the plan, converge implemented work, or update the roadmap status.
 ---
 
 # `sentinel-converge` Skill

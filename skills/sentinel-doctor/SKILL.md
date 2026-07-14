@@ -1,6 +1,9 @@
 ---
 name: sentinel-doctor
-description: Runs a deterministic integrity check on the memory bank (schema completeness, stale locks, log rotation, archive consistency) and reports violations.
+description: >-
+  Runs a deterministic integrity check on the memory bank schemas, file lengths, active locks, and archives.
+  Reads .memory-bank/ directories and active-session.json, and writes the health audit report to .memory-bank/audits/doctor-<date>.md.
+  Use when asked to check memory bank health, verify memory integrity, run a doctor check, or inspect system coherence.
 ---
 
 # `sentinel-doctor` Skill

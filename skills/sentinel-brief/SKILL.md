@@ -1,6 +1,9 @@
 ---
 name: sentinel-brief
-description: Generates a single-page onboarding summary (State of the Union) for humans or agents migrating between environments.
+description: >-
+  Generates a single-page context onboarding summary (State of the Union) for agents migrating workspaces.
+  Reads the active memory bank files and directories, and writes a synthesized overview to .memory-bank/state-of-the-union.md.
+  Use when asked to generate an onboarding summary, summarize the project state, or when switching IDE environments.
 ---
 
 # `sentinel-brief` Skill

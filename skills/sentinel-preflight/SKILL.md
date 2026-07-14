@@ -1,6 +1,9 @@
 ---
 name: sentinel-preflight
-description: Audits the deployment environment, external dependencies, CI/CD pipelines, and secrets before allowing a commit or release.
+description: >-
+  Audits the deployment environment, external dependencies, CI/CD pipelines, and secrets configuration.
+  Inspects wrangler.toml, package manifests, and GitHub Actions configs, and creates a persistent .specs/preflight-checklist.md.
+  Use when asked to run preflight checks, verify secrets and dependencies before push, check environments before release, or prepare deployment.
 ---
 
 # `sentinel-preflight` Skill

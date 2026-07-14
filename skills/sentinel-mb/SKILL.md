@@ -1,6 +1,9 @@
 ---
 name: sentinel-mb
-description: Initializes or syncs the `.memory-bank/` directory structure and active session state.
+description: >-
+  Initializes or syncs the memory bank folder structure and session state without modifying application code.
+  Creates .memory-bank/ directories (changelog, adr, audits, bugs) and writes a version 1.1.0 active-session.json configuration.
+  Use when asked to initialize only the memory bank structure, fix or refresh the session state, or update the active-session file.
 ---
 
 # `sentinel-mb` Skill

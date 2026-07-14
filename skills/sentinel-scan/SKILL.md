@@ -1,6 +1,9 @@
 ---
 name: sentinel-scan
-description: Scans the repository for all markdown and text documentation, outputting a categorized inventory.
+description: >-
+  Scans the repository for all markdown and text documentation files and maps them to identify undocumented files.
+  Reads migration-map.md, looks for *.md and *.txt files in all workspace folders, and outputs a categorized inventory.
+  Use when asked to search or scan for scattered notes, list markdown files in the project, find undocumented text, or map the documentation.
 ---
 
 # `sentinel-scan` Skill

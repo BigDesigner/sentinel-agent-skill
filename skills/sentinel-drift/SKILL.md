@@ -1,6 +1,10 @@
 ---
 name: sentinel-drift
-description: Detects discrepancies between the established architecture and the actual implementation (e.g. rogue packages, orphaned files).
+description: >-
+  Detects discrepancies and drift between the established project architecture and the actual implementation on disk.
+  Reads system-coherence.md and constitution.md, scans for rogue packages, orphaned files, and structure deviations,
+  and saves the drift report to .memory-bank/audits/drift-<short-commit-hash>.md.
+  Use when asked to check for architectural drift, verify file system compliance, find rogue packages, or check project alignment.
 ---
 
 # `sentinel-drift` Skill

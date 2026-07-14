@@ -1,6 +1,10 @@
 ---
 name: sentinel-clarify
-description: Interrogates the user to resolve underspecified requirements and potential boundary violations before planning or coding begins.
+description: >-
+  Interrogates the user with targeted questions to resolve underspecified requirements and scope ambiguity.
+  Analyzes user input, cross-checks project files for context gaps, and generates a structured clarification checklist
+  without modifying any files.
+  Use when user requirements are vague, a feature request has ambiguous scope, or before planning/coding starts.
 ---
 
 # `sentinel-clarify` Skill

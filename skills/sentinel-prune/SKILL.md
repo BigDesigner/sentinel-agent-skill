@@ -1,6 +1,10 @@
 ---
 name: sentinel-prune
-description: Safely cleans up bloated dependency/build folders (e.g. node_modules, .venv, target) and optimizes new projects to use space-efficient package managers (pnpm, uv).
+description: >-
+  Scans the project directory for bloated temporary dependency/build folders and cleans them up to reclaim space.
+  Reads .agents/runtime-manifest.json to ensure permission compliance, and modifies project dependency stack files
+  to suggest pnpm and uv configurations.
+  Only run when the user explicitly invokes the command. Do not auto-trigger.
 disable-model-invocation: true
 ---
 
