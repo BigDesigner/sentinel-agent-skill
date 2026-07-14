@@ -34,7 +34,7 @@ This skill acts as a Framework Navigator and Command Reference. It prints a deta
 | `/sentinel` | Auto-Triggerable | Executes the full 7-step bootstrap procedure to initialize or migrate a project to the Sentinel Agent Memory Bank. Creates `.memory-bank/`, `.specs/`, `.agents/`, and `.tasks/` folders. |
 | `/sentinel-mb` | Auto-Triggerable | Initializes or syncs only the `.memory-bank/` directories and the active session state config without modifying project files. |
 | `/sentinel-scan` | Auto-Triggerable | Scans the repository for all markdown (`*.md`) and text (`*.txt`) files, outputting a categorized documentation inventory in chat. |
-| `/sentinel-audit` | Auto-Triggerable | Perform a report-only security audit of the source code against rules in `.specs/boundary-conditions.md`. Writes report to `.memory-bank/audits/audit-<hash>.md`. |
+| `/sentinel-audit` | Auto-Triggerable | Perform a report-only security audit of the source code checking for common vulnerabilities (SQLi, XSS, RCE, IDOR, etc.) using pre-trained model knowledge and rules in `.specs/boundary-conditions.md`. Writes report to `.memory-bank/audits/audit-<hash>.md`. |
 | `/sentinel-planaudit` | Auto-Triggerable | Audits and hardens a proposed implementation plan against project specs before any execution starts. Directly writes Audit Notes to the plan file. |
 | `/sentinel-clarify` | Auto-Triggerable | Interrogates the user with targeted questions to resolve underspecified requirements and scope ambiguity. |
 | `/sentinel-drift` | Auto-Triggerable | Detects discrepancies and drift between the established project architecture and the actual implementation, writing the report to `.memory-bank/audits/drift-<hash>.md`. |

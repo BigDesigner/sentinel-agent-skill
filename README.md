@@ -107,13 +107,12 @@ For power users who prefer to install the skills manually:
 ### ⚡ Available Skills
 
 Once installed, you can trigger specific workflows using the following commands:
-
 | Command | Purpose |
 |---|---|
 | **`/sentinel`** | Full 7-step bootstrap (Analyzes codebase, reorganizes folders, writes specs). |
 | **`/sentinel-mb`** | Initializes or syncs only the `.memory-bank/` structure and active session state. |
 | **`/sentinel-scan`** | Scans the repository for all `*.md` and `*.txt` files and outputs a categorized documentation inventory. |
-| **`/sentinel-audit`** | Audits the codebase against `.specs/boundary-conditions.md` rules and provides a **report-only** security verdict. |
+| **`/sentinel-audit`** | Scans source files for common vulnerabilities (SQLi, XSS, RCE, IDOR, etc.) and security contract violations. Report-only. |
 | **`/sentinel-handoff`**| Wraps up a work session. Syncs `active-session.json` and updates `handoff.md` with only codebase changes. Commit/push is proposed, never automatic. |
 | **`/sentinel-planaudit`** | Acts as a Senior Architect. Auto-reviews and hardens implementation plans against project specs before execution. |
 | **`/sentinel-clarify`** | Interrogates the user to resolve underspecified requirements and potential boundary violations before planning or coding begins. |
