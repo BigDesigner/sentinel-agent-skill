@@ -20,7 +20,7 @@ This skill acts as a Memory Bank Linter and self-check mechanism. Prompts alone 
 ### 2. Session Schema Check
 - Read `.memory-bank/active-session.json` (read-only; do not acquire the session lock for this).
 - Verify it parses as valid JSON and contains all schema `1.1.0` fields: `schema_version`, `session_id`, `status`, `mode`, `preferred_language`, `timestamp`, `active_branch`, `last_commit`, `git_history_available`, `worktree_status`, `current_sprint`, `tracked_memory_areas`.
-- Flag a missing or unparsable file as **Critical**.
+- Flag a missing or unparsable file as **Critical** (and suggest running `/sentinel` or `/sentinel-mb` to initialize or restore the session state in the repair checklist).
 - Flag `preferred_language: "Unconfirmed"` as a **Warning** (language bootstrapping never completed).
 
 ### 3. Lock Health Check
