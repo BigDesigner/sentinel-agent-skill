@@ -901,14 +901,14 @@ Each section or field must explicitly include one of these confidence labels: `V
 
 Include:
 
-- **Security Constraints & Input Validation:** How data entering the system is validated and sanitized. Enforce rules against raw parameter usage, parameterization requirements, query string safety (handling raw `REQUEST_URI` parsing properly, avoiding regex failures on tracking parameters), and unescaped input reflections.
-- **Authentication, Authorization & Session Management:** Access control boundaries, credential sanitization guidelines (e.g., warning: sanitizing text inputs for passwords can strip valid characters and reduce entropy; only use escaping/unslashing on credentials, never strip tags), secure cookie properties (handling TLS-termination reverse proxies properly to ensure cookies are marked `Secure`), and session lifespan limits.
+- **Security Constraints & Input Validation:** How data entering the system is validated and sanitized. Enforce rules against raw parameter usage, parameterization requirements, and unescaped input reflections (e.g., `(web):` query string safety, handling raw `REQUEST_URI` parsing properly, avoiding regex failures on tracking parameters).
+- **Authentication, Authorization & Session Management:** Access control boundaries, credential sanitization guidelines (e.g., warning: sanitizing text inputs for passwords can strip valid characters and reduce entropy; only use escaping/unslashing on credentials, never strip tags), and session lifespan limits (e.g., `(web):` secure cookie properties, handling TLS-termination reverse proxies properly to ensure cookies are marked `Secure`).
 - **BOLA / IDOR Prevention:** Explicitly mapping ownership verification rules on all actions, ensuring object identifiers are validated against the current session user.
 - **Concurrency & State Verification (Race Conditions):** Expected behavior for simultaneous operations (e.g., checking uniqueness checks vs. unique database constraints to prevent TOCTOU race conditions; checking if database inserts are properly validated and return values are verified rather than blindly assuming success).
-- **Ecosystem-Specific Mitigations:** (e.g., WordPress `esc_html`, `esc_url`, `esc_url_raw`, Next.js `taint`, Rust memory safety).
-- **Dependency & Cleanup Safety:** Deprecated package rules and uninstall/cleanup cleanup expectations (e.g., database schema drop rules, configuration option cleanup scripts, ensuring dead code is pruned).
+- **Ecosystem-Specific Mitigations:** (e.g., `(web/WP)`: `esc_html`, `esc_url`, `esc_url_raw`; `(web/Next.js)`: `taint`; `(native/Rust)`: memory safety; `(mobile)`: keystore boundaries).
+- **Dependency & Cleanup Safety:** Deprecated package rules and uninstall/cleanup expectations (e.g., `(web/WP)`: database schema drop rules, configuration option cleanup scripts; `(native)`: manual memory deallocation; ensuring dead code is pruned).
 - **Rate Limiting & Brute-Force Defense:** Rate limiter behavior (e.g., warning: sliding-window rate limiters that reset TTL on every hit allow slow brute-forcing over time; recommend fixed-window counters or progressive lockouts).
-- **Database constraints & Character Collisions:** Character set collation issues (e.g., case-insensitive collation collisions under UNIQUE constraints).
+- **Database constraints & Character Collisions:** Character set collation issues (e.g., `(DB)`: case-insensitive collation collisions under UNIQUE constraints).
 - **Performance budgets if known.**
 - **Logging, PII & Audit Trails.**
 - **Payment, location, and real-time safety rules if relevant.**
