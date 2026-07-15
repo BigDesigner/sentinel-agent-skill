@@ -36,7 +36,7 @@ This skill performs a lightweight security audit based on the rules defined in `
 - **Present Report:** Present the prioritized audit report to the user in the chat for immediate review.
 - **Security Assurance:** Explicitly state that this is a report-only operation, no source code has been changed, and the report has been saved to the memory bank.
 - **Reporting Language:** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, chat responses, and the generated audit report shown to the user MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.).
-- **Visual Output Template:** Ensure the generated report strictly follows this Markdown structure:
+- **Visual Output Template:** Ensure the generated report strictly follows this Markdown structure. When presenting the report preview/summary in the chat response, do NOT wrap the tables or markdown content inside a code block (like ` ```markdown `). Instead, render them directly in the chat message as native Markdown so the chat UI can display them as beautiful, properly formatted tables:
 ````markdown
 # Security Audit Report: [Commit Hash]
 

@@ -42,8 +42,8 @@ This skill acts as a Memory Bank Linter and self-check mechanism. Prompts alone 
 - Present the report to the user in the chat, followed by a concrete repair checklist (e.g., "delete stale lock", "run log rotation on verified-worklog.md").
 - **Rule:** This skill is report-first. It must NOT modify, rotate, or delete anything without explicit user approval of the repair checklist.
 - **Reporting Language:** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, chat responses, and the health report shown to the user MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.), while the saved audit file remains in English.
-- **Visual Output Template:** Ensure the generated report strictly follows this Markdown structure:
-```markdown
+- **Visual Output Template:** Ensure the generated report strictly follows this Markdown structure. When presenting the health report in the chat response, do NOT wrap the tables or markdown content inside a code block (like ` ```markdown `). Instead, render them directly in the chat message as native Markdown so the chat UI can display them as beautiful, properly formatted tables:
+````markdown
 # Memory Bank Health Report: [YYYY-MM-DD]
 
 ## Integrity Dashboard

@@ -35,8 +35,8 @@ This skill acts as an Architectural Drift Detector. Over time, codebases deviate
 - Save a timestamped copy of the report into `.memory-bank/audits/` (MUST use PLURAL `audits/` per Project Directives).
 - **Rule:** This skill only reports. It does not automatically delete files or rewrite code. It awaits user instruction for remediation.
 - **Reporting Language:** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, chat responses, and generated drift reports shown to the user MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.).
-- **Visual Output Template:** Ensure the generated report strictly follows this Markdown structure:
-```markdown
+- **Visual Output Template:** Ensure the generated report strictly follows this Markdown structure. When presenting the drift report in the chat response, do NOT wrap the tables or markdown content inside a code block (like ` ```markdown `). Instead, render them directly in the chat message as native Markdown so the chat UI can display them as beautiful, properly formatted tables:
+````markdown
 # Architectural Drift Report: [Commit Hash]
 
 ## Drift Summary

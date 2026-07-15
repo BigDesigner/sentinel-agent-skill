@@ -32,8 +32,8 @@ This skill acts as an Onboarding and Context Briefing tool. When a project grows
 - Print the contents of the file in the chat for immediate reading.
 - Ensure the language and formatting are deterministic and not tied to any specific IDE's rendering engine.
 - **Reporting Language (CRITICAL):** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, chat responses, and the generated onboarding summary (`state-of-the-union.md`) MUST be written and translated naturally in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.).
-- **Visual Output Template:** Ensure the generated file strictly follows this Markdown structure:
-```markdown
+- **Visual Output Template:** Ensure the generated file strictly follows this Markdown structure. When presenting the summary in the chat response, do NOT wrap the tables or markdown content inside a code block (like ` ```markdown `). Instead, render them directly in the chat message as native Markdown so the chat UI can display them as beautiful, properly formatted tables:
+````markdown
 # State of the Union: [Project Name]
 
 ## Tech Stack & Architecture

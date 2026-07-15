@@ -37,8 +37,8 @@ This skill acts as a "Release Engineer". Agents often write code perfectly but f
 - Present the preflight warning and a link to the persistent [preflight-checklist.md](file:///.specs/preflight-checklist.md) to the user.
 - Do NOT invoke `git push` or any deployment commands until the user explicitly confirms that the persistent checklist has been fully resolved.
 - **Reporting Language:** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, warning messages, and the chat responses shown to the user MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.) at runtime, while the persistent `.specs/preflight-checklist.md` file is generated in English for universal compatibility.
-- **Visual Output Template:** Ensure the generated `.specs/preflight-checklist.md` strictly follows this Markdown structure:
-```markdown
+- **Visual Output Template:** Ensure the generated `.specs/preflight-checklist.md` strictly follows this Markdown structure. When presenting the checklist preview in the chat response, do NOT wrap the tables or markdown content inside a code block (like ` ```markdown `). Instead, render them directly in the chat message as native Markdown so the chat UI can display them as beautiful, properly formatted tables:
+````markdown
 # Pre-Flight Checklist: [Project Name]
 
 ## Environment Diagnostics
