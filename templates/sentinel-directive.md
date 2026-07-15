@@ -901,18 +901,18 @@ Each section or field must explicitly include one of these confidence labels: `V
 
 Include:
 
-- Security constraints & Input Validation (How data entering the system must be handled).
-- Authentication/authorization assumptions and access control.
-- BOLA/IDOR prevention expectations.
-- Ecosystem-Specific Mitigations (e.g., WordPress `esc_url`, Next.js `taint`, Rust memory safety rules).
-- Dependency Management Rules (handling deprecated packages, favoring stable versions).
-- Rate limits if known.
-- Database constraints.
-- Performance budgets if known.
-- Logging/PII rules.
-- Payment/location/realtime safety rules if relevant.
-- Deployment boundaries.
-- CI/CD boundaries, if workflow files are detected.
+- **Security Constraints & Input Validation:** How data entering the system is validated and sanitized. Enforce rules against raw parameter usage, parameterization requirements, query string safety (handling raw `REQUEST_URI` parsing properly, avoiding regex failures on tracking parameters), and unescaped input reflections.
+- **Authentication, Authorization & Session Management:** Access control boundaries, credential sanitization guidelines (e.g., warning: sanitizing text inputs for passwords can strip valid characters and reduce entropy; only use escaping/unslashing on credentials, never strip tags), secure cookie properties (handling TLS-termination reverse proxies properly to ensure cookies are marked `Secure`), and session lifespan limits.
+- **BOLA / IDOR Prevention:** Explicitly mapping ownership verification rules on all actions, ensuring object identifiers are validated against the current session user.
+- **Concurrency & State Verification (Race Conditions):** Expected behavior for simultaneous operations (e.g., checking uniqueness checks vs. unique database constraints to prevent TOCTOU race conditions; checking if database inserts are properly validated and return values are verified rather than blindly assuming success).
+- **Ecosystem-Specific Mitigations:** (e.g., WordPress `esc_html`, `esc_url`, `esc_url_raw`, Next.js `taint`, Rust memory safety).
+- **Dependency & Cleanup Safety:** Deprecated package rules and uninstall/cleanup cleanup expectations (e.g., database schema drop rules, configuration option cleanup scripts, ensuring dead code is pruned).
+- **Rate Limiting & Brute-Force Defense:** Rate limiter behavior (e.g., warning: sliding-window rate limiters that reset TTL on every hit allow slow brute-forcing over time; recommend fixed-window counters or progressive lockouts).
+- **Database constraints & Character Collisions:** Character set collation issues (e.g., case-insensitive collation collisions under UNIQUE constraints).
+- **Performance budgets if known.**
+- **Logging, PII & Audit Trails.**
+- **Payment, location, and real-time safety rules if relevant.**
+- **Deployment & CI/CD boundaries.**
 
 **Legacy Rules Consolidation:** If you found legacy security/audit rules in ad-hoc files during discovery (e.g., `audit.md`, `rules.md`, `notice.md`, `security-standards.md`), analyze them. If they contain valid boundaries, merge their wisdom into this file. If they are harmful or outdated, ignore them. The original ad-hoc files will be archived in Step 4.
 
