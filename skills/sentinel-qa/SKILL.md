@@ -14,6 +14,9 @@ This is a proactive "Red Team" security and quality assurance skill. Instead of 
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that the Memory Bank is not initialized, and direct the user to run `/sentinel` or `/sentinel-mb` first. Do not attempt to read missing spec files.
+
 ### 1. Load the Target Boundaries
 - Read `.specs/boundary-conditions.md`.
 - Extract the security rules (e.g., SQL Injection prevention rules, IP rate limits, XSS sanitization standards, mandatory encryption).
@@ -29,6 +32,8 @@ This is a proactive "Red Team" security and quality assurance skill. Instead of 
 
 ### 4. Output and Placement
 - Save the generated test files into the project's standard test directory (e.g., `tests/security/`, `spec/redteam/`).
+- **Overwrite Guard:** Before writing, check whether a test file of the same name already exists. NEVER overwrite an existing test file — use a distinct suffix (e.g., `-redteam`) or append new test cases to the existing file instead of replacing it.
+- **Scope Note (Core Principle 2):** The framework's "do not touch application source code" rule refers to production/application logic. Writing NEW test files under the test directory is an explicit, sanctioned exception — but this skill must never modify application source, configuration, or existing non-test files to make a test pass.
 - **Rule:** This skill ONLY writes tests. It does not modify the core logic of the application to "fix" failing tests. The human or another agent must fix the core logic if a test breaks.
 - **Reporting Language:** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, walkthrough reports (such as `walkthrough.md`), and chat responses shown to the user MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.), while the actual codebase files (like Python test scripts) remain strictly in English.
 

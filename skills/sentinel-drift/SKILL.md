@@ -14,6 +14,9 @@ This skill acts as an Architectural Drift Detector. Over time, codebases deviate
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that the Memory Bank is not initialized, and direct the user to run `/sentinel` or `/sentinel-mb` first. Do not attempt to read missing spec files.
+
 ### 1. Context Synchronization
 - Read `.memory-bank/system-coherence.md` (Expected Architecture).
 - Read `.specs/boundary-conditions.md` (Security and Tech Stack Limits).
@@ -32,7 +35,7 @@ This skill acts as an Architectural Drift Detector. Over time, codebases deviate
 ### 4. Reporting
 - Compile a strict `Architectural Drift Report`.
 - Output the report to the user in chat.
-- Save a timestamped copy of the report into `.memory-bank/audits/` (MUST use PLURAL `audits/` per Project Directives).
+- Save a copy of the report into `.memory-bank/audits/` (MUST use PLURAL `audits/` per Project Directives), named `drift-<short-commit-hash>.md` (use fallback `drift-<YYYY-MM-DD>.md` if git history is unavailable), matching the audit-report naming convention.
 - **Rule:** This skill only reports. It does not automatically delete files or rewrite code. It awaits user instruction for remediation.
 - **Reporting Language:** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, chat responses, and generated drift reports shown to the user MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.).
 - **Visual Output Template:** Ensure the generated report strictly follows this Markdown structure. When presenting the drift report in the chat response, do NOT wrap the tables or markdown content inside a code block (like ` ```markdown `). Instead, render them directly in the chat message as native Markdown so the chat UI can display them as beautiful, properly formatted tables:

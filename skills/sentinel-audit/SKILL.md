@@ -14,6 +14,9 @@ This skill performs a lightweight security audit based on the rules defined in `
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that the Memory Bank is not initialized, and direct the user to run `/sentinel` or `/sentinel-mb` first. Do not attempt to read missing spec files.
+
 ### 1. Load Security Standards
 - Read `.specs/boundary-conditions.md` to understand the project's specific security contract (e.g., escaping rules, banned functions, required sanitization, architecture constraints).
 

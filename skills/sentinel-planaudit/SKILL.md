@@ -16,6 +16,9 @@ The `sentinel-planaudit` skill acts as a "Senior Architect" to review a proposed
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that the Memory Bank is not initialized, and direct the user to run `/sentinel` or `/sentinel-mb` first. Do not attempt to read missing spec files.
+
 ### 1. Locate the Active Plan
 Do not guess. Search for the proposed plan document in the following exact order:
 1. **Local Workspace:** Look for `implementation_plan.md`, `plan.md`, or `draft_plan.md` in the root of the current project directory or within `.tasks/`.

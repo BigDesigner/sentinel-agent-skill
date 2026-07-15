@@ -13,6 +13,9 @@ This skill acts as a "Release Engineer". Agents often write code perfectly but f
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that the Memory Bank is not initialized, and direct the user to run `/sentinel` or `/sentinel-mb` first. Do not attempt to read missing spec files.
+
 ### 1. Context and Environment Analysis
 - Analyze the tech stack (e.g., Rust, Go, Flutter, Node.js).
 - Analyze the deployment target (e.g., Windows EXE, Linux Docker, Cloudflare Worker).

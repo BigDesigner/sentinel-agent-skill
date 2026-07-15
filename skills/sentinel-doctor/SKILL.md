@@ -2,7 +2,7 @@
 name: sentinel-doctor
 description: >-
   Runs a deterministic integrity check on the memory bank schemas, file lengths, active locks, and archives.
-  Reads .memory-bank/ directories and active-session.json, and writes the health audit report to .memory-bank/audits/doctor-<date>.md.
+  Reads .memory-bank/ directories and active-session.json, and writes the health audit report to .memory-bank/audits/doctor-<short-commit-hash>.md.
   Use when asked to check memory bank health, verify memory integrity, run a doctor check, or inspect system coherence.
 ---
 
@@ -38,7 +38,7 @@ This skill acts as a Memory Bank Linter and self-check mechanism. Prompts alone 
 
 ### 6. Report and Guided Repair
 - Compile a `Memory Bank Health Report` grading each check: **Critical**, **Violation**, **Warning**, or **OK**.
-- Save a copy of the report to `.memory-bank/audits/doctor-<YYYY-MM-DD>.md` (in English).
+- Save a copy of the report to `.memory-bank/audits/doctor-<short-commit-hash>.md` (use fallback `doctor-<YYYY-MM-DD>.md` if git history is unavailable), in English, matching the audit-report naming convention.
 - Present the report to the user in the chat, followed by a concrete repair checklist (e.g., "delete stale lock", "run log rotation on verified-worklog.md").
 - **Rule:** This skill is report-first. It must NOT modify, rotate, or delete anything without explicit user approval of the repair checklist.
 - **Reporting Language:** Check `.memory-bank/active-session.json` to verify `preferred_language`. All interactive explanations, chat responses, and the health report shown to the user MUST be written in the user's preferred language (e.g., Spanish, French, German, Turkish, etc.), while the saved audit file remains in English.

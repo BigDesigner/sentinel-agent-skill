@@ -15,6 +15,9 @@ This skill acts as an Emergency Recovery Bot. In autonomous agentic systems, AI 
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard (Soft):** This is an emergency recovery skill, so it must not hard-fail when the Memory Bank is corrupted or absent. First check for `.tasks/handoff.md`. If it or the Memory Bank is missing, do NOT halt — fall back to `git log --oneline` to locate the last known-good commit, and inform the user in their preferred language that recovery is proceeding without memory-bank context.
+
 ### 1. Locate the Last Healthy State
 - **Permission Boundaries Check:** Read `.agents/runtime-manifest.json` if it exists. Ensure the recovery process respects the manifest settings, noting any restrictions on `restricted_paths` or `write_allowed_paths` before initiating git commands.
 - Read `.tasks/handoff.md`.

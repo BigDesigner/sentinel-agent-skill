@@ -15,6 +15,9 @@ This skill is designed to be run at the end of a work session. It quickly captur
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that there is no active session to hand off, and direct the user to run `/sentinel` or `/sentinel-mb` first.
+
 1. **Update `active-session.json` (Atomic)**
    - **LOCK:** Check for `.memory-bank/.session.lock`. If present and modified within the last 10 minutes, halt and wait; if it is older than 10 minutes, treat it as a stale lock from a crashed session and delete it. Then create `.memory-bank/.session.lock`.
    - Read `.memory-bank/active-session.json`.

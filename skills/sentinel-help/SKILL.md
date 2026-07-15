@@ -42,7 +42,7 @@ This skill acts as a Framework Navigator and Command Reference. It prints a deta
 | `/sentinel-qa` | Auto-Triggerable | Autonomously designs and writes negative Red Team unit and integration tests under `tests/` based on `.specs/boundary-conditions.md`. |
 | `/sentinel-preflight` | Auto-Triggerable | Audits deployment environment variables, configurations, and secrets before release, creating a persistent `.specs/preflight-checklist.md`. |
 | `/sentinel-brief` | Auto-Triggerable | Generates a single-page context onboarding summary (State of the Union) at `.memory-bank/state-of-the-union.md`. |
-| `/sentinel-doctor` | Auto-Triggerable | Runs a deterministic integrity check on memory bank folders, active locks, logs, and schemas, writing the report to `doctor-<date>.md`. |
+| `/sentinel-doctor` | Auto-Triggerable | Runs a deterministic integrity check on memory bank folders, active locks, logs, and schemas, writing the report to `.memory-bank/audits/doctor-<hash>.md`. |
 | `/sentinel-help` | Auto-Triggerable | Shows this comprehensive help catalog and safety categories. |
 | `/sentinel-handoff` | Explicit-Only (Deterrent) | Updates session state, prunes active handoff logs, and archives old entries to `.archive/`. Locked via `disable-model-invocation: true` and deterrent description. |
 | `/sentinel-rescue` | Explicit-Only (Deterrent) | Emergency recovery protocol: runs `git reset --hard` to the last approved commit. Locked via `disable-model-invocation: true` and deterrent description. |

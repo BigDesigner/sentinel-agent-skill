@@ -13,6 +13,9 @@ This skill acts as an Onboarding and Context Briefing tool. When a project grows
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that the Memory Bank is not initialized, and direct the user to run `/sentinel` or `/sentinel-mb` first. Do not attempt to read missing spec files.
+
 ### 1. Read the Entire Memory Bank
 - Read `.memory-bank/system-coherence.md` (Architecture).
 - Read `.specs/boundary-conditions.md` (Security Rules).

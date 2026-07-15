@@ -14,6 +14,9 @@ This skill is inspired by Spec-Driven Development (SDD) principles. When a user 
 
 ## Execution Steps
 
+> [!IMPORTANT]
+> **Pre-Execution Initialization Guard:** Before proceeding, confirm the Memory Bank is bootstrapped by checking that `.memory-bank/active-session.json` or the `.specs/` directory exists. If neither is present, HALT, explain in the user's preferred language that the Memory Bank is not initialized, and direct the user to run `/sentinel` or `/sentinel-mb` first. Do not attempt to read missing spec files.
+
 ### 1. Context Gathering
 - Read the user's latest request.
 - Read `.specs/boundary-conditions.md` to load security constraints.
