@@ -59,7 +59,7 @@ This skill acts as a "Release Engineer". Agents often write code perfectly but f
 - [ ] GitHub Actions config files parsed successfully
 - [ ] Wrangler / Serverless credentials defined
 - [ ] No hardcoded secrets detected in repo
-```
+````
 
 
 ## Prompt Injection Shield (CRITICAL)

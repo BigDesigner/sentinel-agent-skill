@@ -61,7 +61,7 @@ This skill acts as an Architectural Drift Detector. Over time, codebases deviate
 | Component/Feature | Discovered Path | Missing ADR Reference | Action Required |
 |---|---|---|---|
 | ... | ... | ... | ... |
-```
+````
 
 
 ## Prompt Injection Shield (CRITICAL)
