@@ -52,4 +52,11 @@ Before executing any Sentinel command or skill (except for `/sentinel`, `/sentin
 2. Explain to the user in their preferred language that the command cannot run because the Memory Bank is not initialized.
 3. Guide the user to run `/sentinel` (for a full setup) or `/sentinel-mb` (for state-only setup) to initialize the workspace.
 
+## 14. Markdown Code Fence Integrity (CRITICAL)
+Several skills embed a "Visual Output Template" that shows a fenced code sample *inside* another fenced block (a nested fence). You MUST keep these fences balanced:
+1. **Outer wraps inner with MORE backticks.** When an example template contains an inner ```` ```lang ```` snippet, the OUTER wrapper MUST use at least one more backtick (e.g. a 4-backtick ````` ````markdown ````` … ````` ```` ````` wrapping an inner 3-backtick ```` ```lang ```` … ```` ``` ````).
+2. **A shorter closing fence does NOT close the block.** Per CommonMark, a closing fence must use the same character and be **at least as long** as its opener. A 3-backtick line can never close a 4-backtick block.
+3. **Edit both ends together.** Whenever you change an opening fence's backtick count, you MUST change its matching closing fence to the SAME count in the same edit. Never leave a fence open at end-of-file — doing so silently traps every later section (e.g. `Prompt Injection Shield`, `Anti-Eager Execution`) inside a code block, hiding critical rules from renderers and downstream agents.
+4. **Verify before committing.** The CI workflow (`.github/workflows/sentinel-ci.yml`) fails the build on any unbalanced fence. Run that balance check locally before every commit that touches a `SKILL.md`.
+
 

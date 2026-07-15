@@ -68,6 +68,51 @@ jobs:
           exit(fail)
           "
 
+      # AGENTS.md Rule 14: embedded example fences must be balanced (closing >= opening length).
+      - name: Verify markdown code fences are balanced in all skills
+        run: |
+          python3 << 'PYEOF'
+          import os, sys
+          BT = chr(96)  # backtick, kept out of the shell to avoid command substitution
+          def lead_fence(line):
+              s = line.rstrip('\n').strip()
+              if not s:
+                  return None
+              c = s[0]
+              if c not in (BT, '~'):
+                  return None
+              n = 0
+              while n < len(s) and s[n] == c:
+                  n += 1
+              return (c, n, s[n:])  # (fence char, run length, info string / trailing text)
+          fail = 0
+          for root, _, files in os.walk('skills'):
+              for fn in files:
+                  if fn != 'SKILL.md':
+                      continue
+                  p = os.path.join(root, fn)
+                  stack = []
+                  with open(p, encoding='utf-8') as fh:
+                      for line in fh:
+                          f = lead_fence(line)
+                          if not f:
+                              continue
+                          c, n, rest = f
+                          if stack:
+                              oc, on = stack[-1]
+                              # CommonMark: a valid closer matches the char, is >= as long, and has no info string.
+                              if c == oc and n >= on and rest.strip() == '':
+                                  stack.pop()
+                              # otherwise the line is literal content inside the open block: ignore
+                          else:
+                              stack.append((c, n))
+                  if stack:
+                      print(f'::error file={p}::unbalanced markdown code fence(s) left open at EOF: {stack}. '
+                            f'A closing fence must use the same character and be at least as long as its opener (AGENTS.md Rule 14).')
+                      fail = 1
+          sys.exit(fail)
+          PYEOF
+
       # AGENTS.md Rule 2: canonical directory names only (changelog singular, audits plural).
       - name: Verify canonical memory-bank directory naming
         run: |
