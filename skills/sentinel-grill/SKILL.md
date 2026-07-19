@@ -22,18 +22,22 @@ Unlike other Sentinel skills, this command does NOT require an initialized Memor
   - **Budget, Monetization & Hosting Costs:** What is the target budget? Does the user prefer to maximize Free-Tiers? Will it monetize? What is the expected maintenance lifespan?
   - **Preferences:** Does the user have a preferred backend, frontend, database, or package manager?
 
-### 2. Proactive Stack Recommendations
+### 2. Proactive Stack Recommendations & Dynamic Web Research
 - Analyze the user's answers and compile 2 or 3 distinct technical stacks (e.g., "Edge-First Monorepo", "Classic Monolith", "Serverless Microservices").
+- **Dynamic Research & Pricing Verification (CRITICAL):** Do NOT rely solely on hardcoded limits or historical training data. Offer the user to run a real-time web search (using search/browser tools) to query and verify the latest pricing models, free-tier quotas, bandwidth caps, and terms of service for the proposed technologies.
+- If the user approves, or if you need to resolve ambiguity about current pricing:
+  - Actively search the web for terms like `"<provider> pricing free tier limits"` (e.g., `Cloudflare workers pricing limits`, `Neon postgres free tier limits`).
+  - Cross-check critical limitations (e.g., Vercel's commercial use restrictions on free tier, Neon compute pause hours, Oracle Cloud Always Free instance availability).
 - For each recommendation, provide clear engineering arguments:
   - **Pros & Cons:** Why this stack works or might fail for their specific use case.
-  - **Cost & Free-Tier Optimization (CRITICAL):** Explicitly analyze hosting costs. If the user requested a low-budget or free setup, proactively recommend "Always Free" services and analyze their exact limits:
-    - **Cloudflare Free Tier:** Workers (100k requests/day), D1 (SQLite database), R2 (10GB storage, Class A/B operation limits), KV/Durable Objects free quotas.
+  - **Cost & Free-Tier Optimization:** Present the verified, real-time hosting costs. If a free tier is recommended, document its exact quotas (e.g., bandwidth, storage, CPU hours) as verified from the web search. Keep the following historical baselines in mind as starting points only:
+    - **Cloudflare Free Tier:** Workers (e.g., 100k requests/day), D1 (SQLite database), R2 (10GB storage, Class A/B operation limits), KV/Durable Objects free quotas.
     - **Oracle Cloud Always Free:** Ampere A1 (up to 4 OCPUs, 24GB RAM) or Micro instances (1 OCPU, 1GB RAM) for hosting VPS/Docker workloads.
     - **Supabase/Neon Postgres Free Tiers:** Database storage limits (e.g., 500MB on Supabase, Neon compute pause gotchas).
     - **Vercel/Netlify Free Tiers:** Bandwidth limits (e.g., 100GB/mo) and commercial use restrictions.
   - **Maintenance Cost:** Ease of updates, deployments, and dependency upkeep.
   - **Scalability Boundaries:** Point out where the stack will struggle (e.g., SQLite limits on Cloudflare D1, cold starts on AWS Lambda).
-- Present the recommendations to the user in their preferred language.
+- Present the recommendations and verified pricing/limits data to the user in their preferred language.
 
 ### 3. Alignment Gate
 - Let the user review the recommendations, discuss trade-offs, and make adjustments.
