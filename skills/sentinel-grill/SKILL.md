@@ -19,13 +19,18 @@ Unlike other Sentinel skills, this command does NOT require an initialized Memor
   - **Vision:** What is the project (e.g., SaaS, API, Mobile App, Web App, CLI tool, or Monorepo)?
   - **Target Audience & Scale:** Who will use it? Are there scaling, geographic, or multi-language (i18n) needs?
   - **Deployment Strategy:** Where will it run (e.g., Cloudflare Workers, AWS, Vercel, Fly.io, or VPS)?
-  - **Monetization & Lifespan:** Will it monetize? What is the expected maintenance lifespan?
+  - **Budget, Monetization & Hosting Costs:** What is the target budget? Does the user prefer to maximize Free-Tiers? Will it monetize? What is the expected maintenance lifespan?
   - **Preferences:** Does the user have a preferred backend, frontend, database, or package manager?
 
 ### 2. Proactive Stack Recommendations
 - Analyze the user's answers and compile 2 or 3 distinct technical stacks (e.g., "Edge-First Monorepo", "Classic Monolith", "Serverless Microservices").
 - For each recommendation, provide clear engineering arguments:
   - **Pros & Cons:** Why this stack works or might fail for their specific use case.
+  - **Cost & Free-Tier Optimization (CRITICAL):** Explicitly analyze hosting costs. If the user requested a low-budget or free setup, proactively recommend "Always Free" services and analyze their exact limits:
+    - **Cloudflare Free Tier:** Workers (100k requests/day), D1 (SQLite database), R2 (10GB storage, Class A/B operation limits), KV/Durable Objects free quotas.
+    - **Oracle Cloud Always Free:** Ampere A1 (up to 4 OCPUs, 24GB RAM) or Micro instances (1 OCPU, 1GB RAM) for hosting VPS/Docker workloads.
+    - **Supabase/Neon Postgres Free Tiers:** Database storage limits (e.g., 500MB on Supabase, Neon compute pause gotchas).
+    - **Vercel/Netlify Free Tiers:** Bandwidth limits (e.g., 100GB/mo) and commercial use restrictions.
   - **Maintenance Cost:** Ease of updates, deployments, and dependency upkeep.
   - **Scalability Boundaries:** Point out where the stack will struggle (e.g., SQLite limits on Cloudflare D1, cold starts on AWS Lambda).
 - Present the recommendations to the user in their preferred language.
