@@ -13,8 +13,8 @@ Unlike other Sentinel skills, this command does NOT require an initialized Memor
 
 ## Execution Steps
 
-### 1. Requirements & Vision Gathering
-- Read the user's initial idea.
+### 1. Language & Vision Gathering
+- **Language Verification (CRITICAL FIRST STEP):** Before asking about the project, explicitly ask the user for their preferred communication language (e.g., Turkish, English, Spanish, German, etc.). Conduct the rest of the interview and generate all subsequent reports and configs using that preferred language.
 - Ask the user targeted questions to extract the core requirements:
   - **Vision:** What is the project (e.g., SaaS, API, Mobile App, Web App, CLI tool, or Monorepo)?
   - **Target Audience & Scale:** Who will use it? Are there scaling, geographic, or multi-language (i18n) needs?
@@ -44,8 +44,14 @@ Unlike other Sentinel skills, this command does NOT require an initialized Memor
 - Do NOT proceed to bootstrapping until the user explicitly approves and aligns on a final stack.
 
 ### 4. Custom-Tailored Bootstrapping
-- Once the stack is selected, automatically initialize the Sentinel Memory Bank directories (`.memory-bank/`, `.specs/`, `.tasks/`, `.agents/`).
-- Instead of generic templates, populate the files with specific rules based on the chosen stack:
+- Once the stack is selected, automatically initialize the complete Sentinel Memory Bank directory structure, mimicking the behavior of `/sentinel` and `/sentinel-mb`. Create:
+  - `.memory-bank/` (active-session.json, system-coherence.md, migration-map.md)
+  - `.memory-bank/adr/`, `.memory-bank/changelog/`, `.memory-bank/audits/`, `.memory-bank/bugs/`
+  - `.specs/` (bootstrap.md, boundary-conditions.md, constitution.md)
+  - `.agents/` (AGENTS.md, runtime-manifest.json)
+  - `.tasks/` (pipeline.md, handoff.md)
+- Write the user's selected language into the `preferred_language` property of `.memory-bank/active-session.json`.
+- Populate the core files with specific, custom-tailored contents instead of empty templates:
   - **`ADR 0001` (`.memory-bank/adr/0001-initial-stack.md`):** Document the chosen tech stack, database, package manager, and deployment target.
   - **`.specs/boundary-conditions.md`:** Populate with ecosystem-specific limits (e.g., if using Cloudflare D1 + Drizzle, explicitly pre-populate the stateless transaction safety warning; if using React, add client-side XSS constraints).
   - **`.specs/constitution.md`:** Pre-populate with typical standards for the selected language (e.g., Rust memory safety guidelines, TypeScript strict typing).
