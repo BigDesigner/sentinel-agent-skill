@@ -47,10 +47,10 @@ Any skill that can destroy state, delete files, or mutate session records (curre
 Every skill's frontmatter description MUST follow the trigger-rich formula (400-700 characters in English using folded YAML scalar `>-` format) documenting: (1) what it does, (2) what project files it reads/requires, (3) what outputs it writes, and (4) a set of "Use when..." natural language trigger phrases. Destructive or state-mutating skills (`rescue`, `prune`, `handoff`, `coauth`) MUST use a deterrent tone and explicitly state: "Only run when the user explicitly invokes the command. Do not auto-trigger." in their description to prevent auto-invocation across all IDE platforms.
 
 ## 13. Pre-Execution Initialization Guard (CRITICAL)
-Before executing any Sentinel command or skill (except for `/sentinel`, `/sentinel-mb`, and `/sentinel-help`), you MUST verify that the Memory Bank has been bootstrapped by checking if `.memory-bank/active-session.json` or `.specs/` folders exist on disk. If they are missing:
+Before executing any Sentinel command or skill (except for `/sentinel`, `/sentinel-mb`, `/sentinel-help`, `/sentinel-grill`, and `/sentinel-grillme`), you MUST verify that the Memory Bank has been bootstrapped by checking if `.memory-bank/active-session.json` or `.specs/` folders exist on disk. If they are missing:
 1. HALT execution immediately.
 2. Explain to the user in their preferred language that the command cannot run because the Memory Bank is not initialized.
-3. Guide the user to run `/sentinel` (for a full setup) or `/sentinel-mb` (for state-only setup) to initialize the workspace.
+3. Guide the user to run `/sentinel` (for a full setup), `/sentinel-mb` (for state-only setup), or `/sentinel-grill` (for interactive architecture boot) to initialize the workspace.
 
 ## 14. Markdown Code Fence Integrity (CRITICAL)
 Several skills embed a "Visual Output Template" that shows a fenced code sample *inside* another fenced block (a nested fence). You MUST keep these fences balanced:
