@@ -669,6 +669,7 @@ All generated Markdown files must use:
   - `Verified`
   - `Inferred`
   - `Unconfirmed`
+- **Preservation of Granular Content (No Lossy Summarization):** When migrating legacy specification or decision documents, you MUST NOT aggressively summarize or discard specific technical requirements, numbered/locked decisions (e.g., `L0–L33`), domain topologies, or configuration parameter tables. In order to prevent information loss and architectural drift, either preserve these detailed lists in full within their respective `.specs/` files (like `.specs/constitution.md` or `.specs/boundary-conditions.md`) or extract them into a dedicated `.specs/locked-decisions.md` file.
 
 ### 3.2 `.memory-bank/active-session.json`
 
@@ -754,6 +755,8 @@ No old documentation file may be permanently deleted.
 Every archived file must be recorded in this map.
 
 Every migrated or summarized source must be recorded in this map.
+
+**(Warning on Archive Paths):** Ensure the `Archive Path` matches the exact physical location of the file on disk after migration. For example, if you move the contents of `.spec/rebuild_plan.md` to `.archive/docs-migration/YYYY-MM-DD/` directly, the archive path MUST be `.archive/docs-migration/YYYY-MM-DD/rebuild_plan.md`, NOT `.archive/docs-migration/YYYY-MM-DD/.spec/rebuild_plan.md`.
 
 ### 3.5 `.memory-bank/adr/`
 
@@ -904,7 +907,7 @@ Include:
 - **Security Constraints & Input Validation:** How data entering the system is validated and sanitized. Enforce rules against raw parameter usage, parameterization requirements, and unescaped input reflections (e.g., `(web):` query string safety, handling raw `REQUEST_URI` parsing properly, avoiding regex failures on tracking parameters).
 - **Authentication, Authorization & Session Management:** Access control boundaries, credential sanitization guidelines (e.g., warning: sanitizing text inputs for passwords can strip valid characters and reduce entropy; only use escaping/unslashing on credentials, never strip tags), and session lifespan limits (e.g., `(web):` secure cookie properties, handling TLS-termination reverse proxies properly to ensure cookies are marked `Secure`).
 - **BOLA / IDOR Prevention:** Explicitly mapping ownership verification rules on all actions, ensuring object identifiers are validated against the current session user.
-- **Concurrency & State Verification (Race Conditions):** Expected behavior for simultaneous operations (e.g., checking uniqueness checks vs. unique database constraints to prevent TOCTOU race conditions; checking if database inserts are properly validated and return values are verified rather than blindly assuming success).
+- **Concurrency & State Verification (Race Conditions):** Expected behavior for simultaneous operations (e.g., checking uniqueness checks vs. unique database constraints to prevent TOCTOU race conditions; checking if database inserts are properly validated and return values are verified rather than blindly assuming success; `(DB/Cloudflare D1)`: warning: Drizzle's `.transaction()` is NOT atomic on D1 due to stateless HTTP-based drivers; you MUST use `db.batch()` for true atomic multi-query execution).
 - **Ecosystem-Specific Mitigations:** (e.g., `(web/WP)`: `esc_html`, `esc_url`, `esc_url_raw`; `(web/Next.js)`: `taint`; `(native/Rust)`: memory safety; `(mobile)`: keystore boundaries).
 - **Dependency & Cleanup Safety:** Deprecated package rules and uninstall/cleanup expectations (e.g., `(web/WP)`: database schema drop rules, configuration option cleanup scripts; `(native)`: manual memory deallocation; ensuring dead code is pruned).
 - **Rate Limiting & Brute-Force Defense:** Rate limiter behavior (e.g., warning: sliding-window rate limiters that reset TTL on every hit allow slow brute-forcing over time; recommend fixed-window counters or progressive lockouts).
