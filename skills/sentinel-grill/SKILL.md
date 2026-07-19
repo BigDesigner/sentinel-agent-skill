@@ -14,7 +14,8 @@ Unlike other Sentinel skills, this command does NOT require an initialized Memor
 ## Execution Steps
 
 ### 1. Language & Vision Gathering
-- **Language Verification (CRITICAL FIRST STEP):** Before asking about the project, explicitly ask the user for their preferred communication language (e.g., Turkish, English, Spanish, German, etc.). Conduct the rest of the interview and generate all subsequent reports and configs using that preferred language.
+- **Language Verification (CRITICAL FIRST STEP):** Before asking about the project, explicitly ask the user for their preferred communication language (e.g., Turkish, English, Spanish, German, etc.). Conduct the rest of the interview dialogue and generate all in-chat reports and summaries in that preferred language.
+- **Codebase Language Rule (CRITICAL):** Explain to the user that all generated repository configuration files, codebase files, and memory bank documents (`.memory-bank/`, `.specs/`, etc.) MUST remain in English (the global engineering standard) to prevent context pollution and compatibility issues for future AI agents, unless the user explicitly requests localized codebase documentation.
 - Ask the user targeted questions to extract the core requirements:
   - **Vision:** What is the project (e.g., SaaS, API, Mobile App, Web App, CLI tool, or Monorepo)?
   - **Target Audience & Scale:** Who will use it? Are there scaling, geographic, or multi-language (i18n) needs?
