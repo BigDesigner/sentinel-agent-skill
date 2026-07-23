@@ -58,10 +58,24 @@ This skill acts as a "Release Engineer". Agents often write code perfectly but f
 |---|---|---|---|
 | `e.g. SQLite` | `sqlite3 --version` | Local database storage | [ ] Pending / [ ] OK |
 
-## CI/CD Pipeline Checks
-- [ ] GitHub Actions config files parsed successfully
-- [ ] Wrangler / Serverless credentials defined
-- [ ] No hardcoded secrets detected in repo
+## CI/CD Deployment Integrity Contract (CRITICAL — Platform-Agnostic)
+These three checks apply universally regardless of deployment platform (Cloudflare, Vercel, AWS, Fly.io, Railway, Heroku, etc.):
+
+### 1. Credential-Config Alignment
+- [ ] Every config option requiring elevated permissions (custom domains, DNS zone routes, registry pushes, IAM role bindings) is traced to a confirmed token/credential with that exact scope.
+- [ ] If any permission cannot be confirmed, the lowest-privilege configuration path is chosen and documented.
+
+### 2. CLI/SDK Version Lock
+- [ ] Every CLI flag and SDK method in CI/CD pipeline scripts has been verified against the project's currently pinned tool version (not memory or old docs).
+- [ ] Pinned tool version is confirmed from `package.json`, `pubspec.yaml`, Dockerfile, or equivalent lock file.
+
+### 3. Artifact-to-Job Completeness
+- [ ] All deployable artifacts are enumerated: (e.g., backend API, frontend SPA, mobile build, DB migrations, worker scripts, scheduled jobs).
+- [ ] Every artifact has a corresponding pipeline job. No artifact is silently undeployed.
+
+## General Pipeline Health
+- [ ] GitHub Actions / CI config files parsed successfully.
+- [ ] No hardcoded secrets detected in repository files.
 ````
 
 
