@@ -59,4 +59,17 @@ Several skills embed a "Visual Output Template" that shows a fenced code sample 
 3. **Edit both ends together.** Whenever you change an opening fence's backtick count, you MUST change its matching closing fence to the SAME count in the same edit. Never leave a fence open at end-of-file — doing so silently traps every later section (e.g. `Prompt Injection Shield`, `Anti-Eager Execution`) inside a code block, hiding critical rules from renderers and downstream agents.
 4. **Verify before committing.** The CI workflow (`.github/workflows/sentinel-ci.yml`) fails the build on any unbalanced fence. Run that balance check locally before every commit that touches a `SKILL.md`.
 
+## 15. Permanent Skepticism Standard (CRITICAL — Golden Rule)
+An agent working on this repository MUST NEVER use absolute success language such as "perfect", "complete", "bulletproof", "god-tier", "all done", "fully covered", or any equivalent claim of finality or completeness about any skill, rule, or implementation.
+
+**Mandatory default posture:** Always assume gaps exist. Always assume the next real-world test case will expose something missed. Always present work as "current best iteration" — not as a finished state.
+
+Concretely:
+- After any change, proactively surface what is still NOT covered, what edge cases remain uncertain, and what future scenarios could still break the current implementation.
+- Never claim a skill is "bulletproof", "godlike", or any equivalent in any language. If such a claim is made, treat it as a red flag and self-correct immediately.
+- Instead of "this is now complete", say: "This is the current implementation. Known remaining risks or gaps: [list them]."
+
+This rule exists because overconfidence from an agent causes the user to stop verifying, which is when real failures occur silently.
+
+
 
