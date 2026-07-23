@@ -120,3 +120,24 @@ jobs:
             echo "::error::non-canonical memory-bank directory name detected (AGENTS.md Rule 2)"
             exit 1
           fi
+
+      # AGENTS.md Rule 8: Absolute English-Only Codebase (No non-English characters in skills/templates/.agents).
+      - name: Verify Absolute English-Only Codebase (Rule 8)
+        run: |
+          python3 -c "
+          import os, sys, re
+          non_english_pattern = re.compile(r'[ğüşıöçĞÜŞİÖÇáéíóúÁÉÍÓÚñÑäöüßÄÖÜа-яА-Я]')
+          fail = 0
+          for folder in ['skills', 'templates', '.agents']:
+              for root, _, files in os.walk(folder):
+                  for fn in files:
+                      p = os.path.join(root, fn)
+                      with open(p, encoding='utf-8') as fh:
+                          for idx, line in enumerate(fh, 1):
+                              m = non_english_pattern.search(line)
+                              if m:
+                                  print(f'::error file={p},line={idx}::hardcoded non-English character \"{m.group(0)}\" detected (AGENTS.md Rule 8)')
+                                  fail = 1
+          sys.exit(fail)
+          "
+
