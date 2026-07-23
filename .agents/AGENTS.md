@@ -71,5 +71,16 @@ Concretely:
 
 This rule exists because overconfidence from an agent causes the user to stop verifying, which is when real failures occur silently.
 
+## 16. Post-Push Live CI/CD Pipeline Monitoring Protocol (CRITICAL)
+Whenever an agent executes `git push` on a project with an active CI/CD workflow (e.g., GitHub Actions), it MUST NOT end its turn with "Pushed!" without verifying the remote build outcome.
+
+**IDE-Agnostic Non-Blocking Execution Standard:**
+- **In Google Antigravity / Gemini:** Use the `schedule` tool (e.g., set a `DurationSeconds="30"` timer or `CronExpression="*/1 * * * *"`) or background `run_command` with `gh run watch` to monitor the pipeline asynchronously without blocking the user or wasting tokens in a sleep loop.
+- **In Claude Code / CLI:** Use `gh run watch <run_id>` or background execution (`until [ "$(gh run view <run_id> --json status -q .status 2>&1)" = "completed" ]; do sleep 10; done; gh run view <run_id>`).
+- **In Cursor / Windsurf:** Execute `gh run view <run_id>` in background terminal tasks.
+
+**Auto-Fix Loop:** If the remote pipeline fails (`conclusion == failure`), the agent MUST automatically run `gh run view <run_id> --log-failed`, extract the exact failure traceback, diagnose the root cause, apply a fix, commit, and push again.
+
+
 
 
