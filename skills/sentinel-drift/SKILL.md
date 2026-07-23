@@ -31,6 +31,7 @@ This skill acts as an Architectural Drift Detector. Over time, codebases deviate
 - **Detect Rogue Packages:** Are there libraries in the manifest that violate the boundary conditions? (e.g., A new state manager when `system-coherence.md` strictly mandates a different one).
 - **Detect Orphaned Files:** Are there redundant CI/CD workflows or deprecated entry points that should have been deleted?
 - **Detect Missing Documentation:** Are there major architectural components in the code that lack an accompanying ADR in `.memory-bank/adr/`?
+- **Detect Unwired APIs & Dead UI Actions:** Are there backend API endpoints defined in code that have 0 calls in frontend API services? Are there service methods (e.g. PDF generators, email dispatchers, image uploaders) that have 0 trigger buttons or widgets in the UI screens?
 
 ### 4. Reporting
 - Compile a strict `Architectural Drift Report`.
@@ -47,6 +48,7 @@ This skill acts as an Architectural Drift Detector. Over time, codebases deviate
 - **Rogue Packages Detected:** [None / List]
 - **Orphaned/Deprecated Files:** [None / List]
 - **Missing Documentation / ADRs:** [None / List]
+- **Unconnected / Unwired Features:** [None / List]
 
 ## Detailed Analysis
 
@@ -60,9 +62,16 @@ This skill acts as an Architectural Drift Detector. Over time, codebases deviate
 |---|---|---|---|
 | ... | ... | ... | ... |
 
+### Unconnected API Endpoints & Dead UI Actions
+| Endpoint / Service Method | Layer | Issue | Action Required |
+|---|---|---|---|
+| `e.g. POST /api/quotes/:id/send-email` | Backend API | Route exists, 0 Frontend service calls | Wire to Frontend ApiService |
+| `e.g. PdfService.generatePdf()` | Frontend Service | Class exists, 0 UI trigger buttons | Add UI Download Button |
+
 ### Missing ADR Records
 | Component/Feature | Discovered Path | Missing ADR Reference | Action Required |
 |---|---|---|---|
+
 | ... | ... | ... | ... |
 ````
 

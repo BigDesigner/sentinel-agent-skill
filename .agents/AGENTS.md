@@ -81,6 +81,19 @@ Whenever an agent executes `git push` on a project with an active CI/CD workflow
 
 **Auto-Fix Loop:** If the remote pipeline fails (`conclusion == failure`), the agent MUST automatically run `gh run view <run_id> --log-failed`, extract the exact failure traceback, diagnose the root cause, apply a fix, commit, and push again.
 
+## 17. End-to-End Feature Wiring Verification Rule (CRITICAL — Anti-Illusion Rule)
+An agent MUST NEVER declare a feature, phase, or project "100% Complete" or "Done" based solely on isolated backend endpoints, service classes, or UI components compiling. 
+
+A feature is ONLY complete when its full 5-link End-to-End Wiring Chain is verified:
+1. **DB / Storage Persistence** (Tables, ORM schemas, migration files)
+2. **Backend API Route / Handler** (Exposed HTTP/gRPC endpoint)
+3. **Frontend API Client / Service Method** (Function calling the endpoint)
+4. **UI Trigger Element** (Button, Form submit, Gesture, Navigation event)
+5. **UI Feedback / State Update** (Toast message, Modal response, Screen state change)
+
+If ANY link in this chain is missing (e.g. backend route exists but frontend client never calls it, or client method exists but no UI button triggers it), the feature MUST be classified as `🔴 UNCONNECTED (Gövde Var, Tetikleyici Yok)` and MUST NOT be reported as completed.
+
+
 
 
 

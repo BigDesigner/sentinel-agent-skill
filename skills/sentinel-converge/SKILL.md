@@ -31,6 +31,13 @@ This skill acts as a Course Corrector (Self-Healing Task Aligner). During implem
 - Identify "Orphaned Requirements" (features in the plan that have no corresponding code).
 - Identify "Incomplete Implementations" (stubs or partially working code).
 
+### 3.5 End-to-End Feature Wiring Matrix Audit (CRITICAL — Anti-Illusion Step)
+Agents frequently write backend endpoints or PDF/service classes, see 0 compilation errors, and falsely claim 100% completion while the frontend UI never calls the endpoint or lacks a trigger button. `sentinel-converge` MUST explicitly perform a 5-link End-to-End Wiring Audit for every feature:
+1. **Exposed Backend Routes vs Frontend Clients:** Scan all backend API endpoints (`routes/`, `controllers/`) and verify whether each route is actually imported and called inside frontend API services (`api_service.dart`, `fetch()`, `axios`). Mark missing links as `🔴 UNCONNECTED API`.
+2. **Frontend Service Methods vs UI Triggers:** Scan all frontend service/utility methods (e.g., `sendEmail()`, `downloadPdf()`, `resetPin()`, `uploadImage()`) and search for their exact invocation inside UI screen/widget files (`onPressed`, `onClick`, `submitButton`). Mark any uncalled method as `🔴 UNCONNECTED UI TRIGGER`.
+3. **Feature Actionability:** If a backend endpoint or service method exists in code but has 0 UI trigger buttons, append a high-priority task: `[ ] Wire UI trigger button for [Feature/Endpoint]`.
+
+
 ### 4. Auto-Correction (Task Appending)
 - **Log Rotation Check (CRITICAL):** Before appending, count the lines of `.tasks/pipeline.md`. If it exceeds 300 lines, perform log rotation first: move the oldest ~200 lines to `.archive/docs-migration/<YYYY-MM-DD>/pipeline-archive.md` and summarize them in a single sentence at the top of the active file. This prevents unbounded growth and context-window bloat.
 - Update `.tasks/pipeline.md` (and `task.md` artifact if in use).
