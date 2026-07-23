@@ -91,7 +91,7 @@ A feature is ONLY complete when its full 5-link End-to-End Wiring Chain is verif
 4. **UI Trigger Element** (Button, Form submit, Gesture, Navigation event)
 5. **UI Feedback / State Update** (Toast message, Modal response, Screen state change)
 
-If ANY link in this chain is missing (e.g. backend route exists but frontend client never calls it, or client method exists but no UI button triggers it), the feature MUST be classified as `🔴 UNCONNECTED (Gövde Var, Tetikleyici Yok)` and MUST NOT be reported as completed.
+If ANY link in this chain is missing (e.g. backend route exists but frontend client never calls it, or client method exists but no UI button triggers it), the feature MUST be classified as `🔴 UNCONNECTED (Missing UI Trigger or Service Link)` and MUST NOT be reported as completed.
 
 
 
